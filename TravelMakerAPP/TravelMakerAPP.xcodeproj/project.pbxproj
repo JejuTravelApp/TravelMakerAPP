@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1746F6B82BA2CBE000D044E0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6B72BA2CBE000D044E0 /* HomeView.swift */; };
+		1746F6BA2BA2CBFD00D044E0 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6B92BA2CBFD00D044E0 /* PlanView.swift */; };
+		1746F6BC2BA2CC1500D044E0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6BB2BA2CC1500D044E0 /* MapView.swift */; };
+		1746F6BE2BA2CC2100D044E0 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6BD2BA2CC2100D044E0 /* RecordView.swift */; };
+		1746F6C02BA2DA2000D044E0 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6BF2BA2DA2000D044E0 /* CustomTabView.swift */; };
 		667BB0462B99A2F300983507 /* TravelMakerAPPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */; };
 		667BB0482B99A2F300983507 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0472B99A2F300983507 /* ContentView.swift */; };
 		667BB04A2B99A2F500983507 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667BB0492B99A2F500983507 /* Assets.xcassets */; };
@@ -14,6 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1746F6B72BA2CBE000D044E0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1746F6B92BA2CBFD00D044E0 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
+		1746F6BB2BA2CC1500D044E0 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		1746F6BD2BA2CC2100D044E0 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
+		1746F6BF2BA2DA2000D044E0 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		667BB0422B99A2F300983507 /* TravelMakerAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMakerAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMakerAPPApp.swift; sourceTree = "<group>"; };
 		667BB0472B99A2F300983507 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +42,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1746F6B42BA2CB4F00D044E0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1746F6B72BA2CBE000D044E0 /* HomeView.swift */,
+				1746F6B92BA2CBFD00D044E0 /* PlanView.swift */,
+				1746F6BB2BA2CC1500D044E0 /* MapView.swift */,
+				1746F6BD2BA2CC2100D044E0 /* RecordView.swift */,
+				1746F6BF2BA2DA2000D044E0 /* CustomTabView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1746F6B52BA2CB6400D044E0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1746F6B62BA2CB7300D044E0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		667BB0392B99A2F300983507 = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +87,9 @@
 		667BB0442B99A2F300983507 /* TravelMakerAPP */ = {
 			isa = PBXGroup;
 			children = (
+				1746F6B62BA2CB7300D044E0 /* Model */,
+				1746F6B52BA2CB6400D044E0 /* ViewModel */,
+				1746F6B42BA2CB4F00D044E0 /* View */,
 				667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */,
 				667BB0472B99A2F300983507 /* ContentView.swift */,
 				667BB0492B99A2F500983507 /* Assets.xcassets */,
@@ -137,8 +176,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1746F6B82BA2CBE000D044E0 /* HomeView.swift in Sources */,
+				1746F6BE2BA2CC2100D044E0 /* RecordView.swift in Sources */,
 				667BB0482B99A2F300983507 /* ContentView.swift in Sources */,
+				1746F6BC2BA2CC1500D044E0 /* MapView.swift in Sources */,
 				667BB0462B99A2F300983507 /* TravelMakerAPPApp.swift in Sources */,
+				1746F6BA2BA2CBFD00D044E0 /* PlanView.swift in Sources */,
+				1746F6C02BA2DA2000D044E0 /* CustomTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
