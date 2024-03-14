@@ -13,7 +13,7 @@
 		1746F6BE2BA2CC2100D044E0 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6BD2BA2CC2100D044E0 /* RecordView.swift */; };
 		1746F6C02BA2DA2000D044E0 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6BF2BA2DA2000D044E0 /* CustomTabView.swift */; };
 		667BB0462B99A2F300983507 /* TravelMakerAPPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */; };
-		667BB0482B99A2F300983507 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0472B99A2F300983507 /* ContentView.swift */; };
+		667BB0482B99A2F300983507 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0472B99A2F300983507 /* TabBarView.swift */; };
 		667BB04A2B99A2F500983507 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667BB0492B99A2F500983507 /* Assets.xcassets */; };
 		667BB04D2B99A2F500983507 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667BB04C2B99A2F500983507 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -26,7 +26,7 @@
 		1746F6BF2BA2DA2000D044E0 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		667BB0422B99A2F300983507 /* TravelMakerAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMakerAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMakerAPPApp.swift; sourceTree = "<group>"; };
-		667BB0472B99A2F300983507 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		667BB0472B99A2F300983507 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		667BB0492B99A2F500983507 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		667BB04C2B99A2F500983507 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -45,11 +45,11 @@
 		1746F6B42BA2CB4F00D044E0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1746F6C32BA2E9A100D044E0 /* Tabbar */,
 				1746F6B72BA2CBE000D044E0 /* HomeView.swift */,
 				1746F6B92BA2CBFD00D044E0 /* PlanView.swift */,
 				1746F6BB2BA2CC1500D044E0 /* MapView.swift */,
 				1746F6BD2BA2CC2100D044E0 /* RecordView.swift */,
-				1746F6BF2BA2DA2000D044E0 /* CustomTabView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -83,6 +83,15 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
+		1746F6C32BA2E9A100D044E0 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				1746F6BF2BA2DA2000D044E0 /* CustomTabView.swift */,
+				667BB0472B99A2F300983507 /* TabBarView.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
 		667BB0392B99A2F300983507 = {
 			isa = PBXGroup;
 			children = (
@@ -107,7 +116,6 @@
 				1746F6B52BA2CB6400D044E0 /* ViewModel */,
 				1746F6B42BA2CB4F00D044E0 /* View */,
 				667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */,
-				667BB0472B99A2F300983507 /* ContentView.swift */,
 				667BB0492B99A2F500983507 /* Assets.xcassets */,
 				667BB04B2B99A2F500983507 /* Preview Content */,
 			);
@@ -194,7 +202,7 @@
 			files = (
 				1746F6B82BA2CBE000D044E0 /* HomeView.swift in Sources */,
 				1746F6BE2BA2CC2100D044E0 /* RecordView.swift in Sources */,
-				667BB0482B99A2F300983507 /* ContentView.swift in Sources */,
+				667BB0482B99A2F300983507 /* TabBarView.swift in Sources */,
 				1746F6BC2BA2CC1500D044E0 /* MapView.swift in Sources */,
 				667BB0462B99A2F300983507 /* TravelMakerAPPApp.swift in Sources */,
 				1746F6BA2BA2CBFD00D044E0 /* PlanView.swift in Sources */,

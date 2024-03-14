@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TabBarView: View {
         
     @State var selectedTab: Tab = .house
     
@@ -35,7 +35,7 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    TabBarView()
 }
 
 //    @State var selection = 0 // tab index
