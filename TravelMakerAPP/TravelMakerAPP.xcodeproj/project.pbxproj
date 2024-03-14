@@ -68,6 +68,21 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		1746F6C12BA2E84500D044E0 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				1746F6C22BA2E85400D044E0 /* Map */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		1746F6C22BA2E85400D044E0 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		667BB0392B99A2F300983507 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +102,7 @@
 		667BB0442B99A2F300983507 /* TravelMakerAPP */ = {
 			isa = PBXGroup;
 			children = (
+				1746F6C12BA2E84500D044E0 /* Component */,
 				1746F6B62BA2CB7300D044E0 /* Model */,
 				1746F6B52BA2CB6400D044E0 /* ViewModel */,
 				1746F6B42BA2CB4F00D044E0 /* View */,
@@ -319,6 +335,9 @@
 				DEVELOPMENT_TEAM = 8489U7SJ7U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자 위치를 사용하기위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자 위치를 사용하기위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 위치를 사용하기위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -348,6 +367,9 @@
 				DEVELOPMENT_TEAM = 8489U7SJ7U;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "사용자 위치를 사용하기위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "사용자 위치를 사용하기위해 권한이 필요합니다.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "사용자 위치를 사용하기위해 권한이 필요합니다.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
