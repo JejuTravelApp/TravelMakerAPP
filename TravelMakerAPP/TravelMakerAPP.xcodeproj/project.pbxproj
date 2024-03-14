@@ -12,6 +12,10 @@
 		1746F6BC2BA2CC1500D044E0 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6BB2BA2CC1500D044E0 /* MapView.swift */; };
 		1746F6BE2BA2CC2100D044E0 /* RecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6BD2BA2CC2100D044E0 /* RecordView.swift */; };
 		1746F6C02BA2DA2000D044E0 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6BF2BA2DA2000D044E0 /* CustomTabView.swift */; };
+		1746F6C52BA2EF3300D044E0 /* MapSearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6C42BA2EF3300D044E0 /* MapSearchBarView.swift */; };
+		1746F6C72BA2EF7400D044E0 /* RestaurantDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6C62BA2EF7400D044E0 /* RestaurantDataModel.swift */; };
+		1746F6C92BA2F01000D044E0 /* MapDataLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6C82BA2F01000D044E0 /* MapDataLoad.swift */; };
+		1746F6CB2BA2F3EC00D044E0 /* MapControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6CA2BA2F3EC00D044E0 /* MapControllView.swift */; };
 		667BB0462B99A2F300983507 /* TravelMakerAPPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */; };
 		667BB0482B99A2F300983507 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0472B99A2F300983507 /* TabBarView.swift */; };
 		667BB04A2B99A2F500983507 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667BB0492B99A2F500983507 /* Assets.xcassets */; };
@@ -24,6 +28,10 @@
 		1746F6BB2BA2CC1500D044E0 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		1746F6BD2BA2CC2100D044E0 /* RecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordView.swift; sourceTree = "<group>"; };
 		1746F6BF2BA2DA2000D044E0 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
+		1746F6C42BA2EF3300D044E0 /* MapSearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSearchBarView.swift; sourceTree = "<group>"; };
+		1746F6C62BA2EF7400D044E0 /* RestaurantDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDataModel.swift; sourceTree = "<group>"; };
+		1746F6C82BA2F01000D044E0 /* MapDataLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataLoad.swift; sourceTree = "<group>"; };
+		1746F6CA2BA2F3EC00D044E0 /* MapControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapControllView.swift; sourceTree = "<group>"; };
 		667BB0422B99A2F300983507 /* TravelMakerAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMakerAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMakerAPPApp.swift; sourceTree = "<group>"; };
 		667BB0472B99A2F300983507 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -57,6 +65,7 @@
 		1746F6B52BA2CB6400D044E0 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				1746F6C82BA2F01000D044E0 /* MapDataLoad.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -64,6 +73,7 @@
 		1746F6B62BA2CB7300D044E0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1746F6C62BA2EF7400D044E0 /* RestaurantDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -79,6 +89,8 @@
 		1746F6C22BA2E85400D044E0 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				1746F6C42BA2EF3300D044E0 /* MapSearchBarView.swift */,
+				1746F6CA2BA2F3EC00D044E0 /* MapControllView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -204,8 +216,12 @@
 				1746F6BE2BA2CC2100D044E0 /* RecordView.swift in Sources */,
 				667BB0482B99A2F300983507 /* TabBarView.swift in Sources */,
 				1746F6BC2BA2CC1500D044E0 /* MapView.swift in Sources */,
+				1746F6C92BA2F01000D044E0 /* MapDataLoad.swift in Sources */,
 				667BB0462B99A2F300983507 /* TravelMakerAPPApp.swift in Sources */,
+				1746F6C52BA2EF3300D044E0 /* MapSearchBarView.swift in Sources */,
 				1746F6BA2BA2CBFD00D044E0 /* PlanView.swift in Sources */,
+				1746F6C72BA2EF7400D044E0 /* RestaurantDataModel.swift in Sources */,
+				1746F6CB2BA2F3EC00D044E0 /* MapControllView.swift in Sources */,
 				1746F6C02BA2DA2000D044E0 /* CustomTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
