@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+// enum은 class처럼 쓸 수 있지만 enum에 선언된 것 외에 다른것은 쓰지 못한다는점에서 안전성이 있다고 알려져있음
 enum Tab {
     case house
     case calendar
     case map
-    case photo
+    case airplane
 }
 
 struct CustomTabView: View {
@@ -100,15 +101,15 @@ struct CustomTabView: View {
             
             // 레코드 탭
             Button {
-                selectedTab = .photo
+                selectedTab = .airplane
             } label: {
                 VStack(spacing: 8) {
-                    Image(systemName: "photo")
+                    Image(systemName: "airplane")
                         .resizable()
                         .frame(width: 25, height: 25)
-                        .foregroundColor(selectedTab == .photo ? Color.red : Color.gray)
+                        .foregroundColor(selectedTab == .airplane ? Color.red : Color.gray)
                     
-                    if selectedTab == .photo {
+                    if selectedTab == .airplane {
                         Text("여행 기록")
                             .foregroundColor(Color.red)
                             .offset(y: isPhotoAnimating ? 0 : 100) // UIScreen.main.bounds.size.width: 해당 디바이스의 너비값
@@ -121,7 +122,7 @@ struct CustomTabView: View {
             
             Spacer()
         }
-        .frame(height: 85) // 전체 탭 뷰의 높이 설정
+        .frame(height: 65) // 전체 탭 뷰의 높이 설정
     }
 }
 
