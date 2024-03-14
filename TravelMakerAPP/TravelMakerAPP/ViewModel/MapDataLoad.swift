@@ -10,8 +10,8 @@ import MapKit
 
 class MapDataLoad {
     // json파일을 load하는 함수
-    func loadJson(filename fileName: String) -> [RestaurantDataModel]? {
-        if let url = Bundle.main.url(forResource: "제주도식당Data", withExtension: "json") {
+    func loadRestaurantsJson(filename fileName: String) -> [RestaurantDataModel]? {
+        if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
             do {
                 let data = try Data(contentsOf: url)
                 let decoder = JSONDecoder()
@@ -27,9 +27,12 @@ class MapDataLoad {
     
     // 식당 검색 함수
     func searchRestaurants(searchText: String) -> [RestaurantDataModel]? {
-        guard let restaurants = loadJson(filename: "제주도식당Data") else { return nil }
+        guard let restaurants = loadRestaurantsJson(filename: "제주도식당Data_Test") else { return nil }
         return restaurants.filter { $0.사업장명.contains(searchText) }
     }
+    
+    // 화장실 검색 함수
+//    func searchToilets() ->
 
 }
 

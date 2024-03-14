@@ -16,6 +16,8 @@
 		1746F6C72BA2EF7400D044E0 /* RestaurantDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6C62BA2EF7400D044E0 /* RestaurantDataModel.swift */; };
 		1746F6C92BA2F01000D044E0 /* MapDataLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6C82BA2F01000D044E0 /* MapDataLoad.swift */; };
 		1746F6CB2BA2F3EC00D044E0 /* MapControllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6CA2BA2F3EC00D044E0 /* MapControllView.swift */; };
+		1746F6CE2BA2FB6A00D044E0 /* 제주도식당Data_Test.json in Resources */ = {isa = PBXBuildFile; fileRef = 1746F6CD2BA2FB6900D044E0 /* 제주도식당Data_Test.json */; };
+		1746F6D02BA3298E00D044E0 /* 제주공중화장실Data_전처리.json in Resources */ = {isa = PBXBuildFile; fileRef = 1746F6CF2BA3298E00D044E0 /* 제주공중화장실Data_전처리.json */; };
 		667BB0462B99A2F300983507 /* TravelMakerAPPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */; };
 		667BB0482B99A2F300983507 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0472B99A2F300983507 /* TabBarView.swift */; };
 		667BB04A2B99A2F500983507 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667BB0492B99A2F500983507 /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 		1746F6C62BA2EF7400D044E0 /* RestaurantDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDataModel.swift; sourceTree = "<group>"; };
 		1746F6C82BA2F01000D044E0 /* MapDataLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataLoad.swift; sourceTree = "<group>"; };
 		1746F6CA2BA2F3EC00D044E0 /* MapControllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapControllView.swift; sourceTree = "<group>"; };
+		1746F6CD2BA2FB6900D044E0 /* 제주도식당Data_Test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "제주도식당Data_Test.json"; sourceTree = "<group>"; };
+		1746F6CF2BA3298E00D044E0 /* 제주공중화장실Data_전처리.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "제주공중화장실Data_전처리.json"; sourceTree = "<group>"; };
 		667BB0422B99A2F300983507 /* TravelMakerAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMakerAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMakerAPPApp.swift; sourceTree = "<group>"; };
 		667BB0472B99A2F300983507 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -104,6 +108,15 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		1746F6CC2BA2FB3A00D044E0 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1746F6CF2BA3298E00D044E0 /* 제주공중화장실Data_전처리.json */,
+				1746F6CD2BA2FB6900D044E0 /* 제주도식당Data_Test.json */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		667BB0392B99A2F300983507 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +136,7 @@
 		667BB0442B99A2F300983507 /* TravelMakerAPP */ = {
 			isa = PBXGroup;
 			children = (
+				1746F6CC2BA2FB3A00D044E0 /* Data */,
 				1746F6C12BA2E84500D044E0 /* Component */,
 				1746F6B62BA2CB7300D044E0 /* Model */,
 				1746F6B52BA2CB6400D044E0 /* ViewModel */,
@@ -202,6 +216,8 @@
 			files = (
 				667BB04D2B99A2F500983507 /* Preview Assets.xcassets in Resources */,
 				667BB04A2B99A2F500983507 /* Assets.xcassets in Resources */,
+				1746F6D02BA3298E00D044E0 /* 제주공중화장실Data_전처리.json in Resources */,
+				1746F6CE2BA2FB6A00D044E0 /* 제주도식당Data_Test.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,10 +18,6 @@ enum Tab {
 struct CustomTabView: View {
     
     @Binding var selectedTab: Tab
-    @State var isHouseAnimating: Bool = true
-    @State var isCalendarAnimating: Bool = true
-    @State var isMapAnimating: Bool = true
-    @State var isPhotoAnimating: Bool = true
     
     // 탭의 너비를 계산하기 위해 사용할 수 있는 기본값
     let tabWidth: CGFloat = UIScreen.main.bounds.width / 5
@@ -43,11 +39,8 @@ struct CustomTabView: View {
                     if selectedTab == .house {
                         Text("홈")
                             .foregroundColor(Color.red)
-                            .offset(y: isHouseAnimating ? 0 : 100) // UIScreen.main.bounds.size.width: 해당 디바이스의 너비값
-                            .animation(.easeIn(duration: 1), value: isHouseAnimating)
                     }
                 }
-                .offset(x: -5)
             }
             .frame(width: tabWidth) // 각 버튼의 너비 설정
             
@@ -66,11 +59,8 @@ struct CustomTabView: View {
                     if selectedTab == .calendar {
                         Text("여행 계획")
                             .foregroundColor(Color.red)
-                            .offset(y: isCalendarAnimating ? 0 : 100) // UIScreen.main.bounds.size.width: 해당 디바이스의 너비값
-                            .animation(.easeIn(duration: 1), value: isCalendarAnimating)
                     }
                 }
-                .offset(x: -5)
             }
             .frame(width: tabWidth) // 너비 설정
             
@@ -89,11 +79,8 @@ struct CustomTabView: View {
                     if selectedTab == .map {
                         Text("제주 지도")
                             .foregroundColor(Color.red)
-                            .offset(y: isMapAnimating ? 0 : 100) // UIScreen.main.bounds.size.width: 해당 디바이스의 너비값
-                            .animation(.easeIn(duration: 1), value: isMapAnimating)
                     }
                 }
-                .offset(x: -5)
             }
             .frame(width: tabWidth) // 너비 설정
             
@@ -112,11 +99,8 @@ struct CustomTabView: View {
                     if selectedTab == .airplane {
                         Text("여행 기록")
                             .foregroundColor(Color.red)
-                            .offset(y: isPhotoAnimating ? 0 : 100) // UIScreen.main.bounds.size.width: 해당 디바이스의 너비값
-                            .animation(.easeIn(duration: 1), value: isPhotoAnimating)
                     }
                 }
-                .offset(x: -5)
             }
             .frame(width: tabWidth) // 너비 설정
             
@@ -125,7 +109,3 @@ struct CustomTabView: View {
         .frame(height: 65) // 전체 탭 뷰의 높이 설정
     }
 }
-
-//#Preview {
-//    CustomTabView()
-//}

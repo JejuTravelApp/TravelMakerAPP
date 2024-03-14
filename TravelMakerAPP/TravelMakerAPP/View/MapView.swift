@@ -28,13 +28,26 @@ struct MapView: View {
     @State private var selectedImages: String = "" // 마커에서 선택된 이미지를 담을 변수
     
     // @@ === Constructor === @@
-    var data = MapDataLoad() // json데이터 불러오기 및 검색기능이 있는 class 생성자
+    var data = MapDataLoad() // json데이터 불러오기 및 검색기능이 있는 class 생성자 연돈
     
     
     var body: some View {
         ZStack {
             Map(position: $position, selection: $selectedResult) {
-                
+                ForEach(searchResult, id: \.self) {  restrent in
+                    Annotation(restrent.사업장명, coordinate: CLLocationCoordinate2D(latitude: Double(restrent.lat) ?? 37.5665, longitude: Double(restrent.lng) ?? 126.9780)) {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 5)
+                                .fill(.background)
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(.secondary, lineWidth: 5)
+                            Image(systemName: "fork.knife.circle")
+                                .padding(5)
+                                .frame(width: 20, height: 20)
+                        }
+                    }
+                }
+
             }
             .mapControls() { // AppleMap 기본 버튼 생성
                 MapControllView()
