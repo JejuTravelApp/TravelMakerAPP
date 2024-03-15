@@ -26,8 +26,17 @@ class MapDataLoad {
     }
     
     // 관광지 검색 함수
+    func searchTouristsData(searchText: String) -> [TouristDataModel]? {
+        guard let tourists: [TouristDataModel] = loadJson(filename: "제주도관광지Data_test", type: [TouristDataModel].self) else { return nil }
+        return tourists.filter { $0.title.contains(searchText) || $0.category.contains(searchText) }
+    }
     
-    
+    // 반려동물 동반 카테고리 버튼 함수
+    func searchAnimalData() -> [TouristDataModel]? {
+        guard let tourists: [TouristDataModel] = loadJson(filename: "제주도관광지Data_test", type: [TouristDataModel].self) else { return nil }
+        return tourists.filter { $0.tag.contains("반려동물") }
+    }
+
     // 식당 검색 함수
     func searchRestaurants(searchText: String) -> [RestaurantDataModel]? {
         guard let restaurants: [RestaurantDataModel] = loadJson(filename: "제주도식당Data_Test", type: [RestaurantDataModel].self) else { return nil }

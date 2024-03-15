@@ -23,7 +23,7 @@ struct MapSheetView: View {
                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 10, trailing: 0))
             
             GeometryReader { geometry in
-                ScrollView(.horizontal, showsIndicators: false) {
+                ScrollView(.horizontal, showsIndicators: false) { 
                     HStack(alignment: .center) {
                         //                                      extractImageUrls(from: images).count == 1 ? .center : .firstTextBaseline
                         ForEach(0..<extractImageUrls(from: images).count, id: \.self) { index in
