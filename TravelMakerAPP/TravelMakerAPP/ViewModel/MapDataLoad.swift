@@ -25,6 +25,9 @@ class MapDataLoad {
         return nil
     }
     
+    // 관광지 검색 함수
+    
+    
     // 식당 검색 함수
     func searchRestaurants(searchText: String) -> [RestaurantDataModel]? {
         guard let restaurants: [RestaurantDataModel] = loadJson(filename: "제주도식당Data_Test", type: [RestaurantDataModel].self) else { return nil }
@@ -37,5 +40,8 @@ class MapDataLoad {
             nil }
         return toilets.filter { $0.소재지도로명주소.contains(searchText) }
     }
+    
+    
+    
 }
 

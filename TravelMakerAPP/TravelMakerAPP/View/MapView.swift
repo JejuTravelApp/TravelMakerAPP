@@ -27,6 +27,9 @@ struct MapView: View {
     @State private var showSheet: Bool = false // sheet status
     @State private var selectedTitle: String = "" // 마커에 선택된 매장이름을 담을 변수
     @State private var selectedImages: String = "" // 마커에서 선택된 이미지를 담을 변수
+    @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.85
+    @State private var currentDragOffsetY: CGFloat = 0
+    @State private var endingOffsetY: CGFloat = 0
     
     // @@ === Constructor === @@
     var data = MapDataLoad() // json데이터 불러오기 및 검색기능이 있는 class 생성자 연돈
@@ -46,7 +49,19 @@ struct MapView: View {
                                 .padding(5)
                                 .frame(width: 20, height: 20)
                         }
+                        .onTapGesture { // 마커 클릭시 이벤트
+                            selectedImages = restrent.images // 이미지 상태 업데이트
+                            selectedTitle = restrent.사업장명
+                            //                            print(selectedImages)
+                            showSheet.toggle() // Sheet 표시를 위한 상태 변경
+                        }
+                        .sheet(isPresented: $showSheet) {
+                            MapSheetView(title: $selectedTitle, images: $selectedImages) // 선택된 이미지 전달
+                                .presentationDetents([.height(300), .large]) // medium 또는 large 크기로 조절 가능
+                                .presentationDragIndicator(.visible) // 사용자가 드래그 가능함을 나타내는 인디케이터 보이기
+                        }
                     }
+                    
                 }
                 
                 ForEach(toiletResult, id: \.self) {  toilet in
