@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabBarView: View {
         
-    @State var selectedTab: Tab = .house
+    @State var selectedTab: Tab = .house // 기본값
     
     var body: some View {
         
@@ -29,7 +29,7 @@ struct TabBarView: View {
             CustomTabView(selectedTab: $selectedTab)
                 .padding(.bottom, 15)
         }
-        .edgesIgnoringSafeArea(.bottom)
+        .edgesIgnoringSafeArea([.bottom, .top]) // 이걸 지정해줘야 위, 아래 UI가 가리지 않게됨
         
     }
 }

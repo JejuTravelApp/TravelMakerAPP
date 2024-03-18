@@ -165,106 +165,111 @@ struct MapView: View {
             
             .mapControls() { // AppleMap 기본 버튼 생성
                 MapControllView()
+                    
             }
+            .padding(EdgeInsets(top: 45, leading: 0, bottom: 0, trailing: 0))
             
             
             // 맵 위에 서치바, 카테고리 버튼들이 있는 VStack
             VStack (alignment: .leading) {
                 MapSearchBarView(searchText: $searchText, isTextFieldFocused: _isTextFieldFocused, restaurantResult: $restaurantResult, touristResult: $touristResult, toiletResult: $toiletResult)
-                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 30))
+                    .padding(EdgeInsets(top: 50, leading: 15, bottom: 0, trailing: 0))
                     .onTapGesture {
                         isTextFieldFocused = true
                     }
-
+                
                 
                 // 나중에 struct로 따로 분리할 필요가 있음
                 // 음식점 버튼
-                HStack {
-                    Button(action: {
-                        toiletResult = []
-                        touristResult = []
-                        restaurantResult = []
-                        updatePosition() // 카메라 초기화
-                        
-                        if let results = data.searchRestaurants(searchText: "연돈") {
-                            restaurantResult.append(contentsOf: results)  // 배열에 다른 배열의 내용을 추가
-                        }
-                    }) {
-                        HStack(spacing: 5) {
-                            Image(systemName: "fork.knife")
-                                .resizable()
-                                .frame(width: 13, height: 13)
-                                .foregroundColor(Color.orange)
-                            Text("음식점")
-                                .font(.system(size: 13))
-                                .foregroundStyle(Color.black)
-                        }
-                        .frame(alignment: .center)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                    }
-                    .background(.white)
-                    .cornerRadius(10)
-                    .padding(5)
-
-                    
-                    // 반려동물 버튼
-                    Button(action: {
-                        toiletResult = []
-                        touristResult = []
-                        restaurantResult = []
-                        updatePosition() // 카메라 초기화
-                        
-                        if let results = data.searchAnimalData() {
-                            touristResult.append(contentsOf: results)
-                        }
-                    }) {
-                        HStack(spacing: 5) {
-                            Image(systemName: "dog")
-                                .resizable()
-                                .frame(width: 13, height: 13)
-                                .foregroundColor(Color.brown)
-                            Text("반려동물")
-                                .font(.system(size: 13))
-                                .foregroundStyle(Color.black)
-                        }
-                        .frame(alignment: .center)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                    }
-                    .background(.white)
-                    .cornerRadius(10)
-                    .padding(5)
-
-                    
-                    // 화장실 버튼
-                    Button(action: {
-                        toiletResult = []
-                        touristResult = []
-                        restaurantResult = []
-                        updatePosition() // 카메라 초기화
-                        
-                        if let results = data.searchToilets() {
-                            toiletResult.append(contentsOf: results)  // 배열에 다른 배열의 내용을 추가
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        Button(action: {
+                            toiletResult = []
+                            touristResult = []
+                            restaurantResult = []
+                            updatePosition() // 카메라 초기화
                             
+                            if let results = data.searchRestaurants(searchText: "연돈") {
+                                restaurantResult.append(contentsOf: results)  // 배열에 다른 배열의 내용을 추가
+                            }
+                        }) {
+                            HStack(spacing: 5) {
+                                Image(systemName: "fork.knife")
+                                    .resizable()
+                                    .frame(width: 14, height: 14)
+                                    .foregroundColor(Color.orange)
+                                Text("음식점")
+                                    .font(.system(size: 13))
+                                    .foregroundStyle(Color.black)
+                            }
+                            .frame(alignment: .center)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
                         }
-                    }) {
-                        HStack(spacing: 5) { // 내부 요소 간 간격 조정
-                            Image(systemName: "figure.dress.line.vertical.figure")
-                                .resizable()
-                                .frame(width: 13, height: 13)
-                            Text("화장실")
-                                .font(.system(size: 13))
-                                .foregroundStyle(Color.black)
+                        .background(.white)
+                        .cornerRadius(10)
+                        .padding(5)
+                        
+                        
+                        // 반려동물 버튼
+                        Button(action: {
+                            toiletResult = []
+                            touristResult = []
+                            restaurantResult = []
+                            updatePosition() // 카메라 초기화
+                            
+                            if let results = data.searchAnimalData() {
+                                touristResult.append(contentsOf: results)
+                            }
+                        }) {
+                            HStack(spacing: 5) {
+                                Image(systemName: "dog")
+                                    .resizable()
+                                    .frame(width: 14, height: 14)
+                                    .foregroundColor(Color.brown)
+                                Text("반려동물")
+                                    .font(.system(size: 13))
+                                    .foregroundStyle(Color.black)
+                            }
+                            .frame(alignment: .center)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
                         }
-                        .frame(alignment: .center)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
+                        .background(.white)
+                        .cornerRadius(10)
+                        .padding(5)
+                        
+                        
+                        // 화장실 버튼
+                        Button(action: {
+                            toiletResult = []
+                            touristResult = []
+                            restaurantResult = []
+                            updatePosition() // 카메라 초기화
+                            
+                            if let results = data.searchToilets() {
+                                toiletResult.append(contentsOf: results)  // 배열에 다른 배열의 내용을 추가
+                            }
+                        }) {
+                            HStack(spacing: 5) { // 내부 요소 간 간격 조정
+                                Image(systemName: "figure.dress.line.vertical.figure")
+                                    .resizable()
+                                    .frame(width: 14, height: 14)
+                                Text("화장실")
+                                    .font(.system(size: 13))
+                                    .foregroundStyle(Color.black)
+                            }
+                            .frame(alignment: .center)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                        }
+                        .background(.white)
+                        .cornerRadius(10)
+                        .padding(5)
+                        
                     }
-                    .background(.white)
-                    .cornerRadius(10)
-                    .padding(5)
-
+                    .padding(.leading, 15)
                     
                 }
                 

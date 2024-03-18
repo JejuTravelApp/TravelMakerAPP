@@ -22,8 +22,8 @@ struct MapControllView: View {
                         .mapControlVisibility(.visible)
                         
                 }
-                .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 15))
-                .buttonBorderShape(.circle)
+//                .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 15))
+                .buttonBorderShape(.roundedRectangle)
             }
             .mapScope(mapScope)
     }

@@ -29,7 +29,7 @@ struct MapSearchBarView: View {
             .foregroundColor(.primary)
 //            .focused($isFocusedTextField)
             .focused($isTextFieldFocused)
-            .frame(width: UIScreen.main.bounds.width * 0.6, height: 40)
+            .frame(width: UIScreen.main.bounds.width * 0.63, height: 38)
             
             
             // 텍스트 입력시 x 클리어 버튼 생성
