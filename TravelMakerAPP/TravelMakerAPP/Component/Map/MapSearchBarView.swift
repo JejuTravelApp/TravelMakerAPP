@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MapSearchBarView: View {
     @Binding var searchText: String
-    @FocusState var isFocusedTextField: Bool
+    @FocusState var isTextFieldFocused: Bool
     @Binding var restaurantResult: [RestaurantDataModel] // 식당 검색 결과
     @Binding var touristResult: [TouristDataModel] // 관광지, 쇼핑 검색 결과
     @Binding var toiletResult: [ToiletDataModel] // 화장실 검색 결과 성산일출봉
@@ -27,7 +27,8 @@ struct MapSearchBarView: View {
                 searchAction()
             }
             .foregroundColor(.primary)
-            .focused($isFocusedTextField)
+//            .focused($isFocusedTextField)
+            .focused($isTextFieldFocused)
             .frame(width: UIScreen.main.bounds.width * 0.6, height: 40)
             
             
@@ -67,8 +68,7 @@ struct MapSearchBarView: View {
             toiletResult.append(contentsOf: toiletResults)
         }
         
-        isFocusedTextField = false
-        
+        isTextFieldFocused = false
     }
     
 } // End

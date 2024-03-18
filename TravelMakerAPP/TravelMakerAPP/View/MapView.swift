@@ -27,6 +27,7 @@ struct MapView: View {
     @State private var searchText: String = "" // 검색 텍스트필드
     @State private var showActionButtons = false
     @State private var showMenu = false
+    @FocusState private var isTextFieldFocused: Bool // FocusState를 부모 뷰에서 관리
     
     
     // @@ === BottomSheet Field === @@
@@ -38,11 +39,15 @@ struct MapView: View {
     // 관광지
     
     // 화장실
-    @State private var selectedToiletAddress: String = ""
-    @State private var selectedToiletCount1: String = ""
-    @State private var selectedToiletCount2: String = ""
-    @State private var selectedToiletCount3: String = ""
-    @State private var selectedToiletTime: String = ""
+    @State private var selectedToiletAddress: String = "" // 주소
+    @State private var selectedToiletCount1: Int = 0 // 남성용 장애인 대변기수
+    @State private var selectedToiletCount2: Int = 0 // 남성용 장애인 소변기수
+    @State private var selectedToiletCount3: Int = 0 // 여성용 장애인 대변기수
+    @State private var selectedToiletTime: String = "" // 화장실 개방시간
+    @State private var selectedToiletIsBell: String = "" // 비상벨 유무
+    @State private var selectedToiletBellSpot: String = "" // 비상벨 장소
+    @State private var selectedToiletIsBaby: String = "" // 귀저기교환대장소 유무
+    @State private var selectedToiletBabySpot: String = "" // 귀저기교환대장소
     
     
     
@@ -60,7 +65,7 @@ struct MapView: View {
                             RoundedRectangle(cornerRadius: 5)
                                 .fill(.background)
                             RoundedRectangle(cornerRadius: 2)
-                                .stroke(.secondary, lineWidth: 2)
+                                .stroke(.secondary, lineWidth: 1)
                             if tour.category == "관광지"  && !tour.tag.contains("반려동물"){
                                 Image(systemName: "flag")
                                     .padding(5)
@@ -76,6 +81,9 @@ struct MapView: View {
                             }
                         }
                         .onTapGesture {
+                            // 선택된 어노테이션의 위치로 MapCamera 조절
+                            updatePosition(latitude: tour.latitude, longitude: tour.longitude, latitudeDelta: 0.06, longitudeDelta: 0.06)
+                            
                             selectedTitle = tour.title
                         }
                     }
@@ -87,13 +95,16 @@ struct MapView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 5)
                                 .fill(.background)
-                            //                            RoundedRectangle(cornerRadius: 2)
-                            //                                .stroke(.secondary, lineWidth: 2)
+                            RoundedRectangle(cornerRadius: 2)
+                                .stroke(.secondary, lineWidth: 1)
                             Image(systemName: "fork.knife.circle")
                                 .padding(5)
                                 .frame(width: 16, height: 16)
                         }
                         .onTapGesture { // 마커 클릭시 이벤트
+                            // 선택된 어노테이션의 위치로 MapCamera 조절
+                            updatePosition(latitude: Double(restaurant.lat), longitude: Double(restaurant.lng), latitudeDelta: 0.06, longitudeDelta: 0.06)
+                            
                             selectedImages = restaurant.images // 이미지 상태 업데이트
                             selectedTitle = restaurant.사업장명
                             selectedFoodCategory = restaurant.foodCategory
@@ -115,28 +126,38 @@ struct MapView: View {
                         ZStack {
                             RoundedRectangle(cornerRadius: 5)
                                 .fill(.background)
-                            //                            RoundedRectangle(cornerRadius: 2)
-                            //                                .stroke(.secondary, lineWidth: 2)
+                            RoundedRectangle(cornerRadius: 2)
+                                .stroke(.secondary, lineWidth: 1)
                             Image(systemName: "toilet")
                                 .padding(5)
                                 .frame(width: 16, height: 16)
                         }
                         .onTapGesture { // 마커 클릭시 이벤트
+                            // 선택된 어노테이션의 위치로 MapCamera 조절
+                            updatePosition(latitude: Double(toilet.WGS84위도), longitude: Double(toilet.WGS84경도), latitudeDelta: 0.06, longitudeDelta: 0.06)
+                            
                             selectedTitle = toilet.화장실명
+                            selectedToiletAddress = toilet.소재지도로명주소
+                            selectedToiletCount1 = toilet.남성용_장애인용대변기수
+                            selectedToiletCount2 = toilet.남성용_장애인용소변기수
+                            selectedToiletCount3 = toilet.여성용_장애인용대변기수
+                            selectedToiletTime = toilet.개방시간상세
+                            selectedToiletIsBell = toilet.비상벨설치여부
+                            selectedToiletBellSpot = toilet.비상벨설치장소
+                            selectedToiletIsBaby = toilet.기저귀교환대유무
+                            selectedToiletBabySpot = toilet.기저귀교환대장소
                             
                             showSheet.toggle() // Sheet 표시를 위한 상태 변경
                         }
                         .sheet(isPresented: $showSheet) {
-                            ToiletSheet(title: $selectedTitle)
+                            ToiletSheet(title: $selectedTitle, address: $selectedToiletAddress, toiletCount1: $selectedToiletCount1, toiletCount2: $selectedToiletCount2, toiletCount3: $selectedToiletCount3, time: $selectedToiletTime, isBell: $selectedToiletIsBell, bellSpot: $selectedToiletBellSpot, isBaby: $selectedToiletIsBaby, babySpot: $selectedToiletBabySpot)
                                 .presentationDetents([.height(300)]) // medium 또는 large 크기로 조절 가능
-                            //                                .presentationDragIndicator(.visible) // 사용자가 드래그 가능함을 나타내는 인디케이터 보이기
+                                .presentationDragIndicator(.visible) // 사용자가 드래그 가능함을 나타내는 인디케이터 보이기
                         }
                         
                     }
                 }
             }
-            
-            
             
             .mapControls() { // AppleMap 기본 버튼 생성
                 MapControllView()
@@ -145,8 +166,12 @@ struct MapView: View {
             
             // 맵 위에 서치바, 카테고리 버튼들이 있는 VStack
             VStack (alignment: .leading) {
-                MapSearchBarView(searchText: $searchText, restaurantResult: $restaurantResult, touristResult: $touristResult, toiletResult: $toiletResult)
+                MapSearchBarView(searchText: $searchText, isTextFieldFocused: _isTextFieldFocused, restaurantResult: $restaurantResult, touristResult: $touristResult, toiletResult: $toiletResult)
                     .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 30))
+                    .onTapGesture {
+                        isTextFieldFocused = true
+                    }
+
                 
                 // 나중에 struct로 따로 분리할 필요가 있음
                 HStack {
@@ -154,6 +179,8 @@ struct MapView: View {
                         toiletResult = []
                         touristResult = []
                         restaurantResult = []
+                        updatePosition() // 카메라 초기화
+                        
                         if let results = data.searchRestaurants(searchText: "연돈") {
                             restaurantResult.append(contentsOf: results)  // 배열에 다른 배열의 내용을 추가
                         }
@@ -169,6 +196,7 @@ struct MapView: View {
                         toiletResult = []
                         touristResult = []
                         restaurantResult = []
+                        updatePosition() // 카메라 초기화
                         
                         if let results = data.searchToilets() {
                             toiletResult.append(contentsOf: results)  // 배열에 다른 배열의 내용을 추가
@@ -186,6 +214,7 @@ struct MapView: View {
                         toiletResult = []
                         touristResult = []
                         restaurantResult = []
+                        updatePosition() // 카메라 초기화
                         
                         if let results = data.searchAnimalData() {
                             touristResult.append(contentsOf: results)
@@ -199,71 +228,27 @@ struct MapView: View {
                     .padding(10)
                     
                     
-                    Button(action: {
-                        withAnimation {
-                            showMenu.toggle()
-                        }
-                    }) {
-                        Image(systemName: "fork.knife")
-                    }
-                    .frame(width: 38, height: 30)
-                    .background(.white)
-                    .cornerRadius(10) // 테두리 둥글게
-                    .padding(10)
-                    
-                    
-                    //                                .onTapGesture {
-                    //                                    // 원형 메뉴 영역 내 클릭시 메뉴 유지
-                    //                                }
-                    //                                .animation(.easeInOut, value: showMenu)
-                    
-                    
-                    
                 }
                 
                 Spacer()
             }
-            // 원형 메뉴 도형 및 텍스트 옵션
-            // 조건부로 메뉴를 오버레이
-            //        if showMenu {
-            //            //                MapActionButton()
-            //            Circle()
-            //                .frame(width: 100, height: 100)
-            //                .foregroundColor(Color.gray.opacity(0.3))
-            //                .overlay(
-            //                    VStack {
-            //                        Button(action: {
-            //                            print("옵션 1 동작")
-            //                        }) {
-            //                            Text("옵션 1")
-            //                        }
-            //
-            //                        Button(action: {
-            //                            print("옵션 2 동작")
-            //                        }) {
-            //                            Text("옵션 2")
-            //                        }
-            //
-            //                        Button(action: {
-            //                            print("옵션 3 동작")
-            //                        }) {
-            //                            Text("옵션 3")
-            //                        }
-            //                    }
-            //                        .foregroundColor(.black)
-            //                )
-            //                .onTapGesture {
-            //                    // 원형 메뉴 영역 내 클릭시 메뉴 유지
-            //                }
-            //                .position(x: UIScreen.main.bounds.width / 6.8, y: UIScreen.main.bounds.height / 5.5) // 화면 중앙에 표시
-            //        }
-            //
-            //            .onTapGesture {
-            //                showMenu = false
-            //
-            //            }
         }
-
+        .onTapGesture {
+            isTextFieldFocused = false
+        }
+        
+    }
+    // --- Functions ---
+    
+    // 카메라 포지션을 업데이트 해주기 (아무것도 인자로 받지 않으면 초기화됨)
+    func updatePosition(latitude: Double? = 33.361722862714, longitude: Double? = 126.53366495424248, latitudeDelta: Double? = 0.6, longitudeDelta: Double? = 0.6) {
+        let newRegion = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: latitude ?? 33.361722862714,
+                                           longitude: longitude ?? 126.53366495424248),
+            span: MKCoordinateSpan(latitudeDelta: latitudeDelta ?? 0.6,
+                                   longitudeDelta: longitudeDelta ?? 0.6)
+        )
+        position = .region(newRegion)
     }
     
     
