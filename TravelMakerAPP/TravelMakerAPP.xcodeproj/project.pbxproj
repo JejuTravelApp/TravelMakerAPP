@@ -19,9 +19,12 @@
 		1746F6CE2BA2FB6A00D044E0 /* 제주도식당Data_Test.json in Resources */ = {isa = PBXBuildFile; fileRef = 1746F6CD2BA2FB6900D044E0 /* 제주도식당Data_Test.json */; };
 		1746F6D22BA32C6D00D044E0 /* ToiletDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6D12BA32C6D00D044E0 /* ToiletDataModel.swift */; };
 		1746F6D82BA3459C00D044E0 /* 제주공중화장실Data_전처리.json in Resources */ = {isa = PBXBuildFile; fileRef = 1746F6D72BA3459C00D044E0 /* 제주공중화장실Data_전처리.json */; };
-		1746F6DA2BA3FD9E00D044E0 /* MapSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6D92BA3FD9E00D044E0 /* MapSheetView.swift */; };
+		1746F6DA2BA3FD9E00D044E0 /* RestaurantSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6D92BA3FD9E00D044E0 /* RestaurantSheetView.swift */; };
 		1746F6DC2BA413C400D044E0 /* 제주도관광지Data_test.json in Resources */ = {isa = PBXBuildFile; fileRef = 1746F6DB2BA413C300D044E0 /* 제주도관광지Data_test.json */; };
 		1746F6DE2BA4144F00D044E0 /* TouristDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6DD2BA4144F00D044E0 /* TouristDataModel.swift */; };
+		1746F70E2BA6F2B300D044E0 /* ImageLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F70D2BA6F2B300D044E0 /* ImageLoad.swift */; };
+		1746F7102BA72BCB00D044E0 /* TourSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F70F2BA72BCB00D044E0 /* TourSheet.swift */; };
+		1746F7122BA72D5900D044E0 /* ToiletSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F7112BA72D5900D044E0 /* ToiletSheet.swift */; };
 		667BB0462B99A2F300983507 /* TravelMakerAPPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */; };
 		667BB0482B99A2F300983507 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0472B99A2F300983507 /* TabBarView.swift */; };
 		667BB04A2B99A2F500983507 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667BB0492B99A2F500983507 /* Assets.xcassets */; };
@@ -41,9 +44,12 @@
 		1746F6CD2BA2FB6900D044E0 /* 제주도식당Data_Test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "제주도식당Data_Test.json"; sourceTree = "<group>"; };
 		1746F6D12BA32C6D00D044E0 /* ToiletDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletDataModel.swift; sourceTree = "<group>"; };
 		1746F6D72BA3459C00D044E0 /* 제주공중화장실Data_전처리.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "제주공중화장실Data_전처리.json"; sourceTree = "<group>"; };
-		1746F6D92BA3FD9E00D044E0 /* MapSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSheetView.swift; sourceTree = "<group>"; };
+		1746F6D92BA3FD9E00D044E0 /* RestaurantSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSheetView.swift; sourceTree = "<group>"; };
 		1746F6DB2BA413C300D044E0 /* 제주도관광지Data_test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "제주도관광지Data_test.json"; sourceTree = "<group>"; };
 		1746F6DD2BA4144F00D044E0 /* TouristDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristDataModel.swift; sourceTree = "<group>"; };
+		1746F70D2BA6F2B300D044E0 /* ImageLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoad.swift; sourceTree = "<group>"; };
+		1746F70F2BA72BCB00D044E0 /* TourSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourSheet.swift; sourceTree = "<group>"; };
+		1746F7112BA72D5900D044E0 /* ToiletSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletSheet.swift; sourceTree = "<group>"; };
 		667BB0422B99A2F300983507 /* TravelMakerAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMakerAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMakerAPPApp.swift; sourceTree = "<group>"; };
 		667BB0472B99A2F300983507 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -78,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				1746F6C82BA2F01000D044E0 /* MapDataLoad.swift */,
+				1746F70D2BA6F2B300D044E0 /* ImageLoad.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -103,9 +110,9 @@
 		1746F6C22BA2E85400D044E0 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				1746F70C2BA6F02F00D044E0 /* MapSheet */,
 				1746F6C42BA2EF3300D044E0 /* MapSearchBarView.swift */,
 				1746F6CA2BA2F3EC00D044E0 /* MapControllView.swift */,
-				1746F6D92BA3FD9E00D044E0 /* MapSheetView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -127,6 +134,16 @@
 				1746F6CD2BA2FB6900D044E0 /* 제주도식당Data_Test.json */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		1746F70C2BA6F02F00D044E0 /* MapSheet */ = {
+			isa = PBXGroup;
+			children = (
+				1746F6D92BA3FD9E00D044E0 /* RestaurantSheetView.swift */,
+				1746F70F2BA72BCB00D044E0 /* TourSheet.swift */,
+				1746F7112BA72D5900D044E0 /* ToiletSheet.swift */,
+			);
+			path = MapSheet;
 			sourceTree = "<group>";
 		};
 		667BB0392B99A2F300983507 = {
@@ -247,14 +264,17 @@
 				667BB0482B99A2F300983507 /* TabBarView.swift in Sources */,
 				1746F6BC2BA2CC1500D044E0 /* MapView.swift in Sources */,
 				1746F6C92BA2F01000D044E0 /* MapDataLoad.swift in Sources */,
-				1746F6DA2BA3FD9E00D044E0 /* MapSheetView.swift in Sources */,
+				1746F6DA2BA3FD9E00D044E0 /* RestaurantSheetView.swift in Sources */,
 				667BB0462B99A2F300983507 /* TravelMakerAPPApp.swift in Sources */,
 				1746F6C52BA2EF3300D044E0 /* MapSearchBarView.swift in Sources */,
+				1746F7122BA72D5900D044E0 /* ToiletSheet.swift in Sources */,
 				1746F6BA2BA2CBFD00D044E0 /* PlanView.swift in Sources */,
 				1746F6D22BA32C6D00D044E0 /* ToiletDataModel.swift in Sources */,
 				1746F6C72BA2EF7400D044E0 /* RestaurantDataModel.swift in Sources */,
 				1746F6CB2BA2F3EC00D044E0 /* MapControllView.swift in Sources */,
+				1746F7102BA72BCB00D044E0 /* TourSheet.swift in Sources */,
 				1746F6C02BA2DA2000D044E0 /* CustomTabView.swift in Sources */,
+				1746F70E2BA6F2B300D044E0 /* ImageLoad.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -44,10 +44,10 @@ class MapDataLoad {
     }
     
     // 화장실 검색 함수
-    func searchToilets(searchText: String) -> [ToiletDataModel]? {
+    func searchToilets() -> [ToiletDataModel]? {
         guard let toilets: [ToiletDataModel] = loadJson(filename: "제주공중화장실Data_전처리", type: [ToiletDataModel].self) else { return
             nil }
-        return toilets.filter { $0.소재지도로명주소.contains(searchText) }
+        return toilets
     }
     
     

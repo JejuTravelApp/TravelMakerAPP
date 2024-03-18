@@ -63,7 +63,7 @@ struct MapSearchBarView: View {
         if let touristResults = data.searchTouristsData(searchText: searchText) {
             touristResult.append(contentsOf: touristResults)
         }
-        if let toiletResults = data.searchToilets(searchText: searchText) {
+        if let toiletResults = data.searchToilets() {
             toiletResult.append(contentsOf: toiletResults)
         }
         
