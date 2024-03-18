@@ -58,6 +58,10 @@ struct MapView: View {
     var body: some View {
         ZStack {
             Map(position: $position, selection: $selectedResult) {
+                
+                // 내가 찜한 장소 어노테이션
+                
+                
                 // 관광지 어노테이션
                 ForEach(touristResult, id: \.self) {  tour in
                     Annotation(tour.title, coordinate: CLLocationCoordinate2D(latitude: tour.latitude, longitude: tour.longitude)) {
@@ -108,7 +112,7 @@ struct MapView: View {
                             selectedImages = restaurant.images // 이미지 상태 업데이트
                             selectedTitle = restaurant.사업장명
                             selectedFoodCategory = restaurant.foodCategory
-                            //                            print(selectedImages)
+                            
                             showSheet.toggle() // Sheet 표시를 위한 상태 변경
                         }
                         .sheet(isPresented: $showSheet) {
@@ -174,6 +178,7 @@ struct MapView: View {
 
                 
                 // 나중에 struct로 따로 분리할 필요가 있음
+                // 음식점 버튼
                 HStack {
                     Button(action: {
                         toiletResult = []
@@ -185,13 +190,54 @@ struct MapView: View {
                             restaurantResult.append(contentsOf: results)  // 배열에 다른 배열의 내용을 추가
                         }
                     }) {
-                        Image(systemName: "fork.knife")
+                        HStack(spacing: 5) {
+                            Image(systemName: "fork.knife")
+                                .resizable()
+                                .frame(width: 13, height: 13)
+                                .foregroundColor(Color.orange)
+                            Text("음식점")
+                                .font(.system(size: 13))
+                                .foregroundStyle(Color.black)
+                        }
+                        .frame(alignment: .center)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
                     }
-                    .frame(width: 38, height: 30)
                     .background(.white)
-                    .cornerRadius(10) // 테두리 둥글게
-                    .padding(10)
+                    .cornerRadius(10)
+                    .padding(5)
+
                     
+                    // 반려동물 버튼
+                    Button(action: {
+                        toiletResult = []
+                        touristResult = []
+                        restaurantResult = []
+                        updatePosition() // 카메라 초기화
+                        
+                        if let results = data.searchAnimalData() {
+                            touristResult.append(contentsOf: results)
+                        }
+                    }) {
+                        HStack(spacing: 5) {
+                            Image(systemName: "dog")
+                                .resizable()
+                                .frame(width: 13, height: 13)
+                                .foregroundColor(Color.brown)
+                            Text("반려동물")
+                                .font(.system(size: 13))
+                                .foregroundStyle(Color.black)
+                        }
+                        .frame(alignment: .center)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                    }
+                    .background(.white)
+                    .cornerRadius(10)
+                    .padding(5)
+
+                    
+                    // 화장실 버튼
                     Button(action: {
                         toiletResult = []
                         touristResult = []
@@ -203,30 +249,22 @@ struct MapView: View {
                             
                         }
                     }) {
-                        Image(systemName: "figure.dress.line.vertical.figure")
-                    }
-                    .frame(width: 38, height: 30)
-                    .background(.white)
-                    .cornerRadius(10) // 테두리 둥글게
-                    .padding(10)
-                    
-                    Button(action: {
-                        toiletResult = []
-                        touristResult = []
-                        restaurantResult = []
-                        updatePosition() // 카메라 초기화
-                        
-                        if let results = data.searchAnimalData() {
-                            touristResult.append(contentsOf: results)
+                        HStack(spacing: 5) { // 내부 요소 간 간격 조정
+                            Image(systemName: "figure.dress.line.vertical.figure")
+                                .resizable()
+                                .frame(width: 13, height: 13)
+                            Text("화장실")
+                                .font(.system(size: 13))
+                                .foregroundStyle(Color.black)
                         }
-                    }) {
-                        Image(systemName: "dog")
+                        .frame(alignment: .center)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
                     }
-                    .frame(width: 38, height: 30)
                     .background(.white)
-                    .cornerRadius(10) // 테두리 둥글게
-                    .padding(10)
-                    
+                    .cornerRadius(10)
+                    .padding(5)
+
                     
                 }
                 

@@ -38,7 +38,7 @@ struct ToiletSheet: View {
                     Button {
                         let pasteboard = UIPasteboard.general
                         pasteboard.string = address
-                        if let string = pasteboard.string{
+                        if pasteboard.string != nil{
                             withAnimation {
                                 isCopied = true
                             }
