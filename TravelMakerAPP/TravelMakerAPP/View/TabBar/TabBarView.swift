@@ -10,6 +10,7 @@ import SwiftUI
 struct TabBarView: View {
         
     @State var selectedTab: Tab = .house
+    @State var searchText: String = ""
     
     var body: some View {
         
@@ -17,7 +18,7 @@ struct TabBarView: View {
             Spacer()
             switch selectedTab {
             case .house:
-                HomeView()
+                HomeView(searchText: searchText)
             case .calendar:
                 PlanView()
             case .map:
