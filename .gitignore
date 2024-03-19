@@ -107,4 +107,9 @@ iOSInjectionProject/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,cocoapods
+<<<<<<< HEAD
 .DS_Store
+=======
+TravelMakerAPP/TravelMakerAPP/Data/.DS_Store
+TravelMakerAPP/TravelMakerAPP/View/HomeCopy.swift
+>>>>>>> 1255ac1 (git ignore추가)
