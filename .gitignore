@@ -107,3 +107,5 @@ iOSInjectionProject/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/swift,xcode,cocoapods
+TravelMakerAPP/TravelMakerAPP/Data/.DS_Store
+TravelMakerAPP/TravelMakerAPP/View/HomeCopy.swift
