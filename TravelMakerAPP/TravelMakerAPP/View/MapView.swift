@@ -9,6 +9,14 @@ import SwiftUI
 import MapKit
 import CoreLocation
 
+// Sheet의 종류를 결정하는 열거형
+enum SheetType {
+    case none
+    case tourist
+    case restaurant
+    case toilet
+}
+
 
 struct MapView: View {
     
@@ -31,14 +39,30 @@ struct MapView: View {
     
     
     // @@ === BottomSheet Field === @@
-    @State private var showSheet: Bool = false // sheet status
-    @State private var selectedTitle: String = "" // 선택된 마커 이름을 담을 변수
+    @State private var showTourSheet: Bool = false // sheet status
+    @State private var showFoodSheet: Bool = false // sheet status
+    @State private var showToiletSheet: Bool = false // sheet status
+    // Sheet 표시 여부와 종류를 관리하는 상태 변수
+    //    @State private var showSheet = false
+    @State private var sheetType: SheetType = .none
+    private var sheetSize: CGFloat = UIScreen.main.bounds.height * 0.38
+    
     // 식당
+    @State private var selectedFoodTitle: String = "" // 선택된 마커 이름을 담을 변수
     @State private var selectedFoodCategory: String = "" // 카테고리 담을 변수
-    @State private var selectedImages: String = "" // 선택된 마커가 가진 이미지를 담을 변수
+    @State private var selectedFoodImages: String = "" // 선택된 마커가 가진 이미지를 담을 변수
     // 관광지
+    @State private var selectedTourTitle: String = "" // 선택된 마커 이름을 담을 변수
+    @State private var selectedTourImages: String = ""
+    @State private var selectedTourCategory: String = ""
+    @State private var selectedTourIntro: String = ""
+    @State private var selectedTourAddress: String = ""
+    @State private var selectedTourPhone: String = ""
+    @State private var selectedTourTag: String = ""
+    
     
     // 화장실
+    @State private var selectedToiletTitle: String = "" // 선택된 마커 이름을 담을 변수
     @State private var selectedToiletAddress: String = "" // 주소
     @State private var selectedToiletCount1: Int = 0 // 남성용 장애인 대변기수
     @State private var selectedToiletCount2: Int = 0 // 남성용 장애인 소변기수
@@ -88,7 +112,23 @@ struct MapView: View {
                             // 선택된 어노테이션의 위치로 MapCamera 조절
                             updatePosition(latitude: tour.latitude, longitude: tour.longitude, latitudeDelta: 0.06, longitudeDelta: 0.06)
                             
-                            selectedTitle = tour.title
+                            selectedTourTitle = tour.title
+                            selectedTourCategory = tour.category
+                            selectedTourAddress = tour.roadaddress
+                            selectedTourImages = tour.imgpath
+                            selectedTourIntro = tour.introduction
+                            selectedTourTag = tour.tag
+                            
+                            sheetType = .tourist // 관광지 Sheet 표시 설정
+                            
+                            showToiletSheet = false
+                            showFoodSheet = false
+                            showTourSheet = true
+                            print(showTourSheet)
+                            
+                        }
+                        .sheet(isPresented: $showTourSheet) {
+                            showSheet(sheetType: .tourist)
                         }
                     }
                 }
@@ -109,16 +149,19 @@ struct MapView: View {
                             // 선택된 어노테이션의 위치로 MapCamera 조절
                             updatePosition(latitude: Double(restaurant.lat), longitude: Double(restaurant.lng), latitudeDelta: 0.06, longitudeDelta: 0.06)
                             
-                            selectedImages = restaurant.images // 이미지 상태 업데이트
-                            selectedTitle = restaurant.사업장명
+                            selectedFoodTitle = restaurant.사업장명
+                            selectedFoodImages = restaurant.images // 이미지 상태 업데이트
                             selectedFoodCategory = restaurant.foodCategory
                             
-                            showSheet.toggle() // Sheet 표시를 위한 상태 변경
+                            sheetType = .restaurant // 음식점 Sheet 표시 설정
+                            showTourSheet = false
+                            showToiletSheet = false
+                            showFoodSheet = true
+                            print(showFoodSheet)
+                            
                         }
-                        .sheet(isPresented: $showSheet) {
-                            RestaurantSheetView(title: $selectedTitle, category: $selectedFoodCategory, images: $selectedImages)
-                                .presentationDetents([.height(300), .large]) // medium 또는 large 크기로 조절 가능
-                                .presentationDragIndicator(.visible) // 사용자가 드래그 가능함을 나타내는 인디케이터 보이기
+                        .sheet(isPresented: $showFoodSheet) {
+                            showSheet(sheetType: .restaurant)
                         }
                     }
                     
@@ -140,7 +183,7 @@ struct MapView: View {
                             // 선택된 어노테이션의 위치로 MapCamera 조절
                             updatePosition(latitude: Double(toilet.WGS84위도), longitude: Double(toilet.WGS84경도), latitudeDelta: 0.06, longitudeDelta: 0.06)
                             
-                            selectedTitle = toilet.화장실명
+                            selectedToiletTitle = toilet.화장실명
                             selectedToiletAddress = toilet.소재지도로명주소
                             selectedToiletCount1 = toilet.남성용_장애인용대변기수
                             selectedToiletCount2 = toilet.남성용_장애인용소변기수
@@ -151,21 +194,25 @@ struct MapView: View {
                             selectedToiletIsBaby = toilet.기저귀교환대유무
                             selectedToiletBabySpot = toilet.기저귀교환대장소
                             
-                            showSheet.toggle() // Sheet 표시를 위한 상태 변경
+                            sheetType = .toilet
+                            showTourSheet = false
+                            showFoodSheet = false
+                            showToiletSheet = true
+                            print(showFoodSheet)
+                            
+                            
                         }
-                        .sheet(isPresented: $showSheet) {
-                            ToiletSheet(title: $selectedTitle, address: $selectedToiletAddress, toiletCount1: $selectedToiletCount1, toiletCount2: $selectedToiletCount2, toiletCount3: $selectedToiletCount3, time: $selectedToiletTime, isBell: $selectedToiletIsBell, bellSpot: $selectedToiletBellSpot, isBaby: $selectedToiletIsBaby, babySpot: $selectedToiletBabySpot)
-                                .presentationDetents([.height(300)]) // medium 또는 large 크기로 조절 가능
-                                .presentationDragIndicator(.visible) // 사용자가 드래그 가능함을 나타내는 인디케이터 보이기
+                        .sheet(isPresented: $showToiletSheet) {
+                            showSheet(sheetType: .toilet)
                         }
                         
                     }
                 }
             }
-            
+            .mapStyle(.standard(elevation: .realistic)) // 맵 스타일 유형 옵션 (.standard, .imagery, .hybrid)
             .mapControls() { // AppleMap 기본 버튼 생성
                 MapControllView()
-                    
+                
             }
             .padding(EdgeInsets(top: 45, leading: 0, bottom: 0, trailing: 0))
             
@@ -181,7 +228,6 @@ struct MapView: View {
                 
                 // 나중에 struct로 따로 분리할 필요가 있음
                 // 음식점 버튼
-                
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         Button(action: {
@@ -293,6 +339,26 @@ struct MapView: View {
         )
         position = .region(newRegion)
     }
+    
+    // annotation마다 다른 sheet를 return해주는 함수
+    func showSheet(sheetType: SheetType) -> some View {
+        switch sheetType {
+        case .tourist:
+            return AnyView(TourSheet(title: $selectedTourTitle, category: $selectedTourCategory, address: $selectedTourAddress, images: $selectedTourImages, intro: $selectedTourIntro, phone: $selectedTourPhone, tag: $selectedTourTag)
+                .presentationDetents([.height(sheetSize), .large])
+                .presentationDragIndicator(.visible))
+        case .restaurant:
+            return AnyView(RestaurantSheetView(title: $selectedFoodTitle, category: $selectedFoodCategory, images: $selectedFoodImages)
+                .presentationDetents([.height(sheetSize), .large])
+                .presentationDragIndicator(.visible))
+        case .toilet:
+            return AnyView(ToiletSheet(title: $selectedToiletTitle, address: $selectedToiletAddress, toiletCount1: $selectedToiletCount1, toiletCount2: $selectedToiletCount2, toiletCount3: $selectedToiletCount3, time: $selectedToiletTime, isBell: $selectedToiletIsBell, bellSpot: $selectedToiletBellSpot, isBaby: $selectedToiletIsBaby, babySpot: $selectedToiletBabySpot)
+                .presentationDetents([.height(sheetSize)]) // medium 또는 large 크기로 조절 가능
+                .presentationDragIndicator(.visible) // 사용자가 드래그 가능함을 나타내는 인디케이터 보이기
+            )
+        default:
+            return AnyView(EmptyView()) // default 케이스에 대한 처리 추가
+        }    }
     
     
 } // End

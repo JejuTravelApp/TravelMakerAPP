@@ -32,6 +32,7 @@ struct MapSearchBarView: View {
             .frame(width: UIScreen.main.bounds.width * 0.63, height: 38)
             
             
+            
             // 텍스트 입력시 x 클리어 버튼 생성
             if !searchText.isEmpty {
                 Button(action: {
