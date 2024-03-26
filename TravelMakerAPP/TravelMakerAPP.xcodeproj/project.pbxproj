@@ -19,10 +19,24 @@
 		1746F6CE2BA2FB6A00D044E0 /* 제주도식당Data_Test.json in Resources */ = {isa = PBXBuildFile; fileRef = 1746F6CD2BA2FB6900D044E0 /* 제주도식당Data_Test.json */; };
 		1746F6D22BA32C6D00D044E0 /* ToiletDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F6D12BA32C6D00D044E0 /* ToiletDataModel.swift */; };
 		1746F6D82BA3459C00D044E0 /* 제주공중화장실Data_전처리.json in Resources */ = {isa = PBXBuildFile; fileRef = 1746F6D72BA3459C00D044E0 /* 제주공중화장실Data_전처리.json */; };
+		663A9F672BAC08230089A13B /* AISearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663A9F662BAC08230089A13B /* AISearch.swift */; };
+		663A9F6D2BAC5DE60089A13B /* AISearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663A9F6C2BAC5DE60089A13B /* AISearchBar.swift */; };
+		663A9F6F2BAC61B20089A13B /* SearchListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663A9F6E2BAC61B20089A13B /* SearchListModel.swift */; };
+		6660A2A72BB1B0EF00D42200 /* AISearchBarTest_SQLITE3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6660A2A62BB1B0EF00D42200 /* AISearchBarTest_SQLITE3.swift */; };
+		666D35B62BB016ED00EDE99A /* AISearchBarTest_SQLITE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666D35B52BB016ED00EDE99A /* AISearchBarTest_SQLITE.swift */; };
 		667BB0462B99A2F300983507 /* TravelMakerAPPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */; };
 		667BB0482B99A2F300983507 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0472B99A2F300983507 /* TabBarView.swift */; };
 		667BB04A2B99A2F500983507 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667BB0492B99A2F500983507 /* Assets.xcassets */; };
 		667BB04D2B99A2F500983507 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667BB04C2B99A2F500983507 /* Preview Assets.xcassets */; };
+		66861BD82BA9AB0000321ABC /* 제주도관광지이미지데이터.json in Resources */ = {isa = PBXBuildFile; fileRef = 66861BD72BA9AB0000321ABC /* 제주도관광지이미지데이터.json */; };
+		66861BDA2BA9BA3900321ABC /* TravelMakerDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66861BD92BA9BA3900321ABC /* TravelMakerDB.swift */; };
+		66B515F92BA8277100D85108 /* TourDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B515F82BA8277100D85108 /* TourDataModel.swift */; };
+		66B515FB2BA8455E00D85108 /* 제주도관광지데이터.json in Resources */ = {isa = PBXBuildFile; fileRef = 66B515FA2BA8455E00D85108 /* 제주도관광지데이터.json */; };
+		66B515FD2BA847E000D85108 /* HomeCopy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B515FC2BA847E000D85108 /* HomeCopy.swift */; };
+		66B515FF2BA84A6E00D85108 /* TourDataLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B515FE2BA84A6E00D85108 /* TourDataLoad.swift */; };
+		66B516052BA978AB00D85108 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B516042BA978AB00D85108 /* DetailView.swift */; };
+		66CF1CAB2BAEC6C900FD16E1 /* AISearchBarTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CF1CAA2BAEC6C900FD16E1 /* AISearchBarTest.swift */; };
+		66CF1CAD2BAED06F00FD16E1 /* AISearchTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CF1CAC2BAED06F00FD16E1 /* AISearchTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,11 +52,25 @@
 		1746F6CD2BA2FB6900D044E0 /* 제주도식당Data_Test.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "제주도식당Data_Test.json"; sourceTree = "<group>"; };
 		1746F6D12BA32C6D00D044E0 /* ToiletDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletDataModel.swift; sourceTree = "<group>"; };
 		1746F6D72BA3459C00D044E0 /* 제주공중화장실Data_전처리.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "제주공중화장실Data_전처리.json"; sourceTree = "<group>"; };
+		663A9F662BAC08230089A13B /* AISearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISearch.swift; sourceTree = "<group>"; };
+		663A9F6C2BAC5DE60089A13B /* AISearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISearchBar.swift; sourceTree = "<group>"; };
+		663A9F6E2BAC61B20089A13B /* SearchListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListModel.swift; sourceTree = "<group>"; };
+		6660A2A62BB1B0EF00D42200 /* AISearchBarTest_SQLITE3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISearchBarTest_SQLITE3.swift; sourceTree = "<group>"; };
+		666D35B52BB016ED00EDE99A /* AISearchBarTest_SQLITE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISearchBarTest_SQLITE.swift; sourceTree = "<group>"; };
 		667BB0422B99A2F300983507 /* TravelMakerAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMakerAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMakerAPPApp.swift; sourceTree = "<group>"; };
 		667BB0472B99A2F300983507 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		667BB0492B99A2F500983507 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		667BB04C2B99A2F500983507 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		66861BD72BA9AB0000321ABC /* 제주도관광지이미지데이터.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "제주도관광지이미지데이터.json"; sourceTree = "<group>"; };
+		66861BD92BA9BA3900321ABC /* TravelMakerDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMakerDB.swift; sourceTree = "<group>"; };
+		66B515F82BA8277100D85108 /* TourDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourDataModel.swift; sourceTree = "<group>"; };
+		66B515FA2BA8455E00D85108 /* 제주도관광지데이터.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "제주도관광지데이터.json"; sourceTree = "<group>"; };
+		66B515FC2BA847E000D85108 /* HomeCopy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCopy.swift; sourceTree = "<group>"; };
+		66B515FE2BA84A6E00D85108 /* TourDataLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourDataLoad.swift; sourceTree = "<group>"; };
+		66B516042BA978AB00D85108 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		66CF1CAA2BAEC6C900FD16E1 /* AISearchBarTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISearchBarTest.swift; sourceTree = "<group>"; };
+		66CF1CAC2BAED06F00FD16E1 /* AISearchTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AISearchTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +92,10 @@
 				1746F6B92BA2CBFD00D044E0 /* PlanView.swift */,
 				1746F6BB2BA2CC1500D044E0 /* MapView.swift */,
 				1746F6BD2BA2CC2100D044E0 /* RecordView.swift */,
+				66B515FC2BA847E000D85108 /* HomeCopy.swift */,
+				66B516042BA978AB00D85108 /* DetailView.swift */,
+				663A9F662BAC08230089A13B /* AISearch.swift */,
+				66CF1CAC2BAED06F00FD16E1 /* AISearchTest.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -72,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				1746F6C82BA2F01000D044E0 /* MapDataLoad.swift */,
+				66B515FE2BA84A6E00D85108 /* TourDataLoad.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -81,6 +114,9 @@
 			children = (
 				1746F6C62BA2EF7400D044E0 /* RestaurantDataModel.swift */,
 				1746F6D12BA32C6D00D044E0 /* ToiletDataModel.swift */,
+				66B515F82BA8277100D85108 /* TourDataModel.swift */,
+				66861BD92BA9BA3900321ABC /* TravelMakerDB.swift */,
+				663A9F6E2BAC61B20089A13B /* SearchListModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -88,6 +124,7 @@
 		1746F6C12BA2E84500D044E0 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				663A9F6B2BAC5DD10089A13B /* AISearch */,
 				1746F6C22BA2E85400D044E0 /* Map */,
 			);
 			path = Component;
@@ -114,10 +151,23 @@
 		1746F6CC2BA2FB3A00D044E0 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				66B515FA2BA8455E00D85108 /* 제주도관광지데이터.json */,
+				66861BD72BA9AB0000321ABC /* 제주도관광지이미지데이터.json */,
 				1746F6D72BA3459C00D044E0 /* 제주공중화장실Data_전처리.json */,
 				1746F6CD2BA2FB6900D044E0 /* 제주도식당Data_Test.json */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		663A9F6B2BAC5DD10089A13B /* AISearch */ = {
+			isa = PBXGroup;
+			children = (
+				663A9F6C2BAC5DE60089A13B /* AISearchBar.swift */,
+				66CF1CAA2BAEC6C900FD16E1 /* AISearchBarTest.swift */,
+				666D35B52BB016ED00EDE99A /* AISearchBarTest_SQLITE.swift */,
+				6660A2A62BB1B0EF00D42200 /* AISearchBarTest_SQLITE3.swift */,
+			);
+			path = AISearch;
 			sourceTree = "<group>";
 		};
 		667BB0392B99A2F300983507 = {
@@ -218,7 +268,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				667BB04D2B99A2F500983507 /* Preview Assets.xcassets in Resources */,
+				66B515FB2BA8455E00D85108 /* 제주도관광지데이터.json in Resources */,
 				667BB04A2B99A2F500983507 /* Assets.xcassets in Resources */,
+				66861BD82BA9AB0000321ABC /* 제주도관광지이미지데이터.json in Resources */,
 				1746F6D82BA3459C00D044E0 /* 제주공중화장실Data_전처리.json in Resources */,
 				1746F6CE2BA2FB6A00D044E0 /* 제주도식당Data_Test.json in Resources */,
 			);
@@ -234,14 +286,26 @@
 				1746F6B82BA2CBE000D044E0 /* HomeView.swift in Sources */,
 				1746F6BE2BA2CC2100D044E0 /* RecordView.swift in Sources */,
 				667BB0482B99A2F300983507 /* TabBarView.swift in Sources */,
+				66B515FD2BA847E000D85108 /* HomeCopy.swift in Sources */,
 				1746F6BC2BA2CC1500D044E0 /* MapView.swift in Sources */,
+				66B515FF2BA84A6E00D85108 /* TourDataLoad.swift in Sources */,
 				1746F6C92BA2F01000D044E0 /* MapDataLoad.swift in Sources */,
+				663A9F672BAC08230089A13B /* AISearch.swift in Sources */,
+				66CF1CAD2BAED06F00FD16E1 /* AISearchTest.swift in Sources */,
+				666D35B62BB016ED00EDE99A /* AISearchBarTest_SQLITE.swift in Sources */,
 				667BB0462B99A2F300983507 /* TravelMakerAPPApp.swift in Sources */,
 				1746F6C52BA2EF3300D044E0 /* MapSearchBarView.swift in Sources */,
+				66B516052BA978AB00D85108 /* DetailView.swift in Sources */,
+				66861BDA2BA9BA3900321ABC /* TravelMakerDB.swift in Sources */,
+				6660A2A72BB1B0EF00D42200 /* AISearchBarTest_SQLITE3.swift in Sources */,
+				663A9F6F2BAC61B20089A13B /* SearchListModel.swift in Sources */,
 				1746F6BA2BA2CBFD00D044E0 /* PlanView.swift in Sources */,
 				1746F6D22BA32C6D00D044E0 /* ToiletDataModel.swift in Sources */,
 				1746F6C72BA2EF7400D044E0 /* RestaurantDataModel.swift in Sources */,
 				1746F6CB2BA2F3EC00D044E0 /* MapControllView.swift in Sources */,
+				66CF1CAB2BAEC6C900FD16E1 /* AISearchBarTest.swift in Sources */,
+				663A9F6D2BAC5DE60089A13B /* AISearchBar.swift in Sources */,
+				66B515F92BA8277100D85108 /* TourDataModel.swift in Sources */,
 				1746F6C02BA2DA2000D044E0 /* CustomTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
