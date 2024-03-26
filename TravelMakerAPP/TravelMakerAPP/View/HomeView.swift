@@ -48,6 +48,7 @@ struct HomeView: View {
                             .clipShape(RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/))
                             .keyboardType(.default)
                             .focused($isTextFieldFocused)
+                            
                         //                        .searchable(text: $searchText, isPresented: $searchIsActivate, prompt: "검색어를 입력하세요")
                             .overlay(
                                 HStack{
@@ -69,7 +70,7 @@ struct HomeView: View {
                                             }
     //                                        .fullScreenCover(isPresented: $showDetail){
                                             .sheet(isPresented: $showDetail){
-                                                DetailView(searchText: $searchText)
+                                                DetailView(searchText: searchText)
                                             }
                                     if searchIsActivate{
                                         Button(action: {

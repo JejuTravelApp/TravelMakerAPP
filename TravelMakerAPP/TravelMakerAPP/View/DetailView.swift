@@ -12,15 +12,19 @@ struct DetailView: View {
     //첫화면으로 이동
     @Environment(\.presentationMode) var presentationMode
     //searchTest를 통해 데이터를 검색할 것.
-    @Binding var searchText : String
+    @State var searchText : String
     
     var body: some View {
-        Button(action: {
-            presentationMode.wrappedValue.dismiss()
-//            searchText = ""
-        }, label: {
+        VStack{
             Text(searchText)
-        })
+            Button("Back"){
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
+        
+        
+        
+        
             
     }
 }
