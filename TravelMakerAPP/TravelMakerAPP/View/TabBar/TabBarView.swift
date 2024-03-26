@@ -11,6 +11,7 @@ struct TabBarView: View {
         
     @State var selectedTab: Tab = .house
     @State var searchText: String = ""
+    @State var currentDate = Date()
     
     var body: some View {
         
@@ -18,7 +19,7 @@ struct TabBarView: View {
             Spacer()
             switch selectedTab {
             case .house:
-                HomeView(searchText: searchText)
+                AISearchTest(searchText: searchText, currentDate: currentDate)
             case .calendar:
                 PlanView()
             case .map:
