@@ -10,6 +10,7 @@ import Foundation
 struct RecordModel: Codable, Identifiable, Hashable {
     
     var id = UUID()
+    var rId: Int
     var title: String
     var imageList: [String]
     var rTag: String
