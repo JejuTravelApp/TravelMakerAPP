@@ -34,13 +34,13 @@ struct RecordView: View {
             .navigationBarTitle("여행기록", displayMode: .inline) // VStack에 BarTitle이 붙음
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    // Image에 onTap을 안쓰고 NavigationLink로 감싼 이유는
-                    // NavigationLink가 더 상위에서 알고있어야되기 때문
-                    //                  NavigationLink(destination: AddView(todoLists: $todoLists)) {
-                    //                      Image(systemName: "plus.circle")
+                    NavigationLink(destination: RecordAddView()) {
+                        Image(systemName: "plus")
+                    }
                 }
             }
             .onAppear(perform: {
+                recordList.removeAll()
                 // 예시 데이터
                 let imageList1 = ["arcade.stick.console", "playstation.logo", "bolt.car.fill"]
                 let record1 = RecordModel(rId: 1, title: "황도와 가족들의 애월 여행기", imageList: imageList1, rTag: "우정여행, 반려견동반", rStartDate: "2023.12.01", rEndDate: "2023.12.05", rFriend: "가족들, 정황도, 호식이", rReivew: "날이 추웠지만 좋았음")
