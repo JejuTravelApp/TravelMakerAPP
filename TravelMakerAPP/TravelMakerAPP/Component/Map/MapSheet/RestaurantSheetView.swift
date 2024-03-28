@@ -30,6 +30,10 @@ struct RestaurantSheetView: View {
             }
             .padding(.horizontal, 10)
             
+            Divider()
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
+
+            
                 GeometryReader { geometry in
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(alignment: .center) {
@@ -40,7 +44,7 @@ struct RestaurantSheetView: View {
                                     case .success(let image):
                                         image
                                             .resizable()
-                                            .frame(width: 250, height: 200)
+                                            .frame(width: 260, height: 230)
                                         // 이미지 한장일 때 가운데정렬
                                             .padding(.leading, imageLoad.extractImageUrls(from: images).count == 1 ? (geometry.size.width - 250) / 2 : 0)
                                         
@@ -58,7 +62,7 @@ struct RestaurantSheetView: View {
                             
                         }
                     }
-                    .frame(height: 200) // ScrollView의 높이 설정
+                    .frame(height: 230) // ScrollView의 높이 설정
                     .background(.thinMaterial)
                     .padding(.horizontal, 10)
                 }

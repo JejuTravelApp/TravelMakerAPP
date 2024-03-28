@@ -24,9 +24,13 @@ struct ToiletSheet: View {
     
     var body: some View {
         ZStack {
+//            Divider()
+//                .frame(width: UIScreen.main.bounds.height * 0.1, height: 2, alignment: .center)
+//                .padding(.horizontal, 10)
+            
             VStack(alignment: .leading) {
                 Text(title)
-                    .font(.system(size: 25))
+                    .font(.system(size: 27))
                     .bold()
                     .padding(EdgeInsets(top: 20, leading: 10, bottom: 10, trailing: 10))
                 HStack {
@@ -65,7 +69,7 @@ struct ToiletSheet: View {
                 }
                 
                 Divider()
-                    .padding(.horizontal, 10)
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
                 
                 toiletStr(iconName: "clock", iconColor: Color.black, titleName: "개방시간: ", detail: time)
                 toiletStr(iconName: "face.smiling", iconColor: Color.yellow, titleName: "귀저기 교환대: ", detail: isBaby == "Y" ? babySpot : "없음")
@@ -109,16 +113,16 @@ struct toiletStr: View {
         HStack {
             Image(systemName: iconName)
                 .resizable()
-                .frame(width: 15, height: 15)
+                .frame(width: 18, height: 18)
                 .foregroundColor(iconColor)
             
             Text(titleName)
                 .bold()
             
             Text(detail)
-                .font(.system(size: 14))
+                .font(.system(size: 16))
         }
-        .padding(.horizontal, 10)
+        .padding(.horizontal, 13)
         
     }
 } // End

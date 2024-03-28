@@ -26,6 +26,8 @@
 		1746F7102BA72BCB00D044E0 /* TourSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F70F2BA72BCB00D044E0 /* TourSheet.swift */; };
 		1746F7122BA72D5900D044E0 /* ToiletSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1746F7112BA72D5900D044E0 /* ToiletSheet.swift */; };
 		1746F7162BA8221F00D044E0 /* 제주도식당_지도Data.json in Resources */ = {isa = PBXBuildFile; fileRef = 1746F7152BA8221F00D044E0 /* 제주도식당_지도Data.json */; };
+		17EE16482BB42FFE00406A16 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE16472BB42FFE00406A16 /* UserLocationManager.swift */; };
+		17EE164A2BB46F7D00406A16 /* SheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EE16492BB46F7D00406A16 /* SheetController.swift */; };
 		667BB0462B99A2F300983507 /* TravelMakerAPPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */; };
 		667BB0482B99A2F300983507 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 667BB0472B99A2F300983507 /* TabBarView.swift */; };
 		667BB04A2B99A2F500983507 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 667BB0492B99A2F500983507 /* Assets.xcassets */; };
@@ -52,6 +54,8 @@
 		1746F70F2BA72BCB00D044E0 /* TourSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourSheet.swift; sourceTree = "<group>"; };
 		1746F7112BA72D5900D044E0 /* ToiletSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletSheet.swift; sourceTree = "<group>"; };
 		1746F7152BA8221F00D044E0 /* 제주도식당_지도Data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "제주도식당_지도Data.json"; sourceTree = "<group>"; };
+		17EE16472BB42FFE00406A16 /* UserLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
+		17EE16492BB46F7D00406A16 /* SheetController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetController.swift; sourceTree = "<group>"; };
 		667BB0422B99A2F300983507 /* TravelMakerAPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelMakerAPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		667BB0452B99A2F300983507 /* TravelMakerAPPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelMakerAPPApp.swift; sourceTree = "<group>"; };
 		667BB0472B99A2F300983507 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
@@ -87,6 +91,7 @@
 			children = (
 				1746F6C82BA2F01000D044E0 /* MapDataLoad.swift */,
 				1746F70D2BA6F2B300D044E0 /* ImageLoad.swift */,
+				17EE16472BB42FFE00406A16 /* UserLocationManager.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -105,6 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				1746F6C22BA2E85400D044E0 /* Map */,
+				17EE16492BB46F7D00406A16 /* SheetController.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -276,9 +282,11 @@
 				1746F6D22BA32C6D00D044E0 /* ToiletDataModel.swift in Sources */,
 				1746F6C72BA2EF7400D044E0 /* RestaurantDataModel.swift in Sources */,
 				1746F6CB2BA2F3EC00D044E0 /* MapControllView.swift in Sources */,
+				17EE164A2BB46F7D00406A16 /* SheetController.swift in Sources */,
 				1746F7102BA72BCB00D044E0 /* TourSheet.swift in Sources */,
 				1746F6C02BA2DA2000D044E0 /* CustomTabView.swift in Sources */,
 				1746F70E2BA6F2B300D044E0 /* ImageLoad.swift in Sources */,
+				17EE16482BB42FFE00406A16 /* UserLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

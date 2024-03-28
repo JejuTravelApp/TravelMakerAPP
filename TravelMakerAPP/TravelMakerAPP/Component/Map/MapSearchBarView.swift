@@ -26,8 +26,7 @@ struct MapSearchBarView: View {
             TextField("관광지•음식점 검색", text: $searchText) {
                 searchAction()
             }
-            .foregroundColor(.primary)
-//            .focused($isFocusedTextField)
+//            .foregroundColor(.primary)
             .focused($isTextFieldFocused)
             .frame(width: UIScreen.main.bounds.width * 0.63, height: 38)
             
@@ -51,6 +50,7 @@ struct MapSearchBarView: View {
         //        .background(Color(.secondarySystemBackground))
         .background(Color(.white))
         .cornerRadius(10.0)
+        
     }
     // --- Functions ---
     // 검색 함수
