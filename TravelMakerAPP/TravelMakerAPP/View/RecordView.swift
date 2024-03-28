@@ -21,7 +21,6 @@ struct RecordView: View {
                             RecordImageView(record: record, scrollIndex: $scrollIndelx)
                                 .id(record.rId)
                         }
-                        //                    .shadow(radius: 5, x: 5, y: 5)
                         .onChange(of: scrollIndelx) { // @Binding으로 묶여있는 scrollIndelx를 통해서 구현, Search의 개념이라고 생각하면 됨
                             withAnimation {
                                 proxy.scrollTo(scrollIndelx, anchor: .center) // 여기서 이동
@@ -31,7 +30,7 @@ struct RecordView: View {
                     
                 }
             }
-            .navigationBarTitle("여행기록", displayMode: .inline) // VStack에 BarTitle이 붙음
+            .navigationBarTitle("여행 기록", displayMode: .inline) // VStack에 BarTitle이 붙음
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: RecordAddView()) {
@@ -58,6 +57,9 @@ struct RecordView: View {
             })
             
         }
+        
+        
+        
     }
 }
 
