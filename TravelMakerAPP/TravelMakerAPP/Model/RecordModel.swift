@@ -12,6 +12,11 @@ struct RecordModel: Codable, Identifiable, Hashable {
     var id = UUID()
     var title: String
     var imageList: [String]
+    var rTag: String
+    var rStartDate: String
+    var rEndDate: String
+    var rFriend: String
+    var rReivew: String
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
