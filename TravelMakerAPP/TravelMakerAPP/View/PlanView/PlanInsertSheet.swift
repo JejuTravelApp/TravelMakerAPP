@@ -7,8 +7,16 @@
 
 import SwiftUI
 
-struct PlanInsertView: View {
+struct PlanInsertSheet: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack{
+            Text("PlanInsertView")
+            Button("Back"){
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
 }
