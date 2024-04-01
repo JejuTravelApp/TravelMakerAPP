@@ -18,20 +18,8 @@ struct RecordAddView: View {
     
     @State private var selectedStartDate = Date()
     @State private var selectedEndDate = Date()
-    // 날짜 범위로 현재날짜 이전은 선택 못하게할려면 Date()...을 in에 써주면됨
-    var dateRange: ClosedRange<Date> {
-       let min = Calendar.current.date(
-         byAdding: .year,
-         value: -10,
-         to: selectedStartDate
-       )!
-       let max = Calendar.current.date(
-         byAdding: .year,
-         value: 10,
-         to: selectedStartDate
-       )!
-       return min...max
-     }
+    @State private var isStartDateAlert = false // 여행 시작일 Alert
+    @State private var isEndDateAlert = false // 여행 종료일 Alert
     
     var body: some View {
         NavigationView { // 이걸로 감싸줘야 해당 화면을 넘기고 title을 줄 수 있음
@@ -102,20 +90,59 @@ struct RecordAddView: View {
                             .bold()
                             .padding(.horizontal, 10)
                         
-                        VStack {
-                            Image(systemName: "calendar.circle")
-                            Text("날짜 선택")
-                                .bold()
-                        }
-                        
+
                         Spacer()
                     }
-                    DatePicker("", selection: $selectedStartDate, in: dateRange, displayedComponents: [.date])
-                        .labelsHidden()
-                        .datePickerStyle(.graphical) // 픽커 스타일
-                        .padding()
-                    
-                    Text("선택시간: \(selectedStartDate, formatter: dateFormatter)")
+                    HStack(spacing: 30) {
+                        Button {
+                            isStartDateAlert = true
+                        } label: {
+                            VStack {
+                                Image(systemName: "airplane.departure")
+                                    .padding(.bottom, 3)
+                                Text("여행 시작일 설정")
+                                    .bold()
+                                    .font(.system(size: 12))
+                            }
+                        }
+                        .alert("여행 시작일 선택", isPresented: $isStartDateAlert) {
+                            RecordStartDatePickerView(selectedStartDate: $selectedStartDate)
+                            Button("선택완료", role: .none) {
+                                print("Action Default")
+                            }
+                        }
+
+
+                        Button {
+                            isEndDateAlert = true
+                        } label: {
+                            VStack {
+                                Image(systemName: "airplane.arrival")
+                                    .padding(.bottom, 3)
+                                Text("여행 종료일 설정")
+                                    .bold()
+                                    .font(.system(size: 12))
+                            }
+                        }
+                        .alert("여행 시작일 선택", isPresented: $isEndDateAlert) {
+                            RecordEndDatePickerView(selectedEndDate: $selectedEndDate)
+                            Button("선택완료", role: .none) {
+                                print("Action Default")
+                            }
+                        }
+                        
+
+
+                    }
+                    .padding()
+
+                    HStack {
+                        Text("\(selectedStartDate, formatter: dateFormatter)")
+                        Text("~")
+                            .padding(.horizontal, 3)
+                        Text("\(selectedEndDate, formatter: dateFormatter)")
+                    }
+                    .padding(.bottom, 8)
                     
                     
                     
