@@ -22,6 +22,8 @@ class TM_DB : ObservableObject{
         //쿼리문
         let create_searchlist = "CREATE TABLE IF NOT EXISTS searchlist (searchid INTEGER PRIMARY KEY AUTOINCREMENT, searchname TEXT, searchdate TEXT)"
         
+        //
+        let create_record = "CREATE TABLE IF NOT EXISTS record (rid INTEGER PRIMARY KEY AUTOINCREMENT, rgid INTEGER, FOREIGN KEY(rgid) REFERENCES group(gid), rtitle TEXT, rtag TEXT, rphoto TEXT, rreview TEXT, rfriend TEXT, rstartdate TEXT, renddate TEXT)"
         
         
         //Table만들기
@@ -30,8 +32,46 @@ class TM_DB : ObservableObject{
             print("error creating table: \(errMsg)")
         }
         
+        //
+        if sqlite3_exec(db, create_record, nil, nil, nil) != SQLITE_OK {
+            let errMsg = String(cString: sqlite3_errmsg(db)!)
+            print("error creating table: \(errMsg)")
+        }
+
+        
         
     } //init
+    
+    
+    
+    
+    
+    func tempRecordInsert(){
+        var stmt: OpaquePointer?
+        // unsafeBitCast: 한글을 쓰기위해서 넣는 옵션 (2byte)
+        let SQLITE_TRANSIENT = unsafeBitCast(-1, to: sqlite3_destructor_type.self)
+        
+        let queryString = "INSERT INTO students (sname, sdept, sphone) VALUES (?,?,?)"
+        
+        if sqlite3_prepare(db, queryString, -1, &stmt, nil) != SQLITE_OK{
+            let errMsg = String(cString: sqlite3_errmsg(db)!)
+            print("error preparing insert : \(errMsg)")
+            return
+        }
+        
+        sqlite3_bind_text(stmt, 1, "유비", -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(stmt, 2, "컴퓨터공학과", -1, SQLITE_TRANSIENT)
+        sqlite3_bind_text(stmt, 3, "1234", -1, SQLITE_TRANSIENT)
+
+        if sqlite3_step(stmt) != SQLITE_DONE{
+            let errMsg = String(cString: sqlite3_errmsg(db)!)
+            print("error insert data : \(errMsg)")
+        }
+    } // ----
+
+    
+    
+    
     
 //    func queryDB_searchList() -> [SearchList] {
 //        var stmt : OpaquePointer?

@@ -24,7 +24,7 @@ struct RecordImageView: View {
         VStack (alignment: .leading) { // 테두리 안쪽
             // rTitle
             HStack {
-                Text(record.title)
+                Text(record.rTitle)
                     .font(.system(size: 20))
                     .bold()
                     .padding(8)
@@ -60,7 +60,7 @@ struct RecordImageView: View {
             // Image
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(alignment: .top) {
-                    ForEach(record.imageList, id: \.self) { imageName in
+                    ForEach(record.rPhoto, id: \.self) { imageName in
                         Image(systemName: imageName)
                             .resizable()
                             .frame(width: 260, height: 230)

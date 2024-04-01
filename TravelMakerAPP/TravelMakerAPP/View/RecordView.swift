@@ -42,13 +42,13 @@ struct RecordView: View {
                 recordList.removeAll()
                 // 예시 데이터
                 let imageList1 = ["arcade.stick.console", "playstation.logo", "bolt.car.fill"]
-                let record1 = RecordModel(rId: 1, title: "황도와 가족들의 애월 여행기", imageList: imageList1, rTag: "우정여행, 반려견동반", rStartDate: "2023.12.01", rEndDate: "2023.12.05", rFriend: "가족들, 정황도, 호식이", rReivew: "날이 추웠지만 좋았음")
+                let record1 = RecordModel(rId: 1, rTitle: "황도와 가족들의 애월 여행기", rPhoto: imageList1, rTag: "우정여행, 반려견동반", rFriend: "가족들, 정황도, 호식이", rReivew: "날이 추웠지만 좋았음", rStartDate: "2023.12.01", rEndDate: "2023.12.05")
                 
                 let imageList2 = ["airtag.fill", "macpro.gen3.fill", "sun.dust.fill"]
-                let record2 = RecordModel(rId: 2, title: "홀로 애월 여행기", imageList: imageList2, rTag: "홀로여행", rStartDate: "2024.02.13", rEndDate: "2024.02.16", rFriend: "홀로여행", rReivew: "전보단 따듯해졌지만 여전히 추웠음")
+                let record2 = RecordModel(rId: 2, rTitle: "홀로 애월 여행기", rPhoto: imageList2, rTag: "홀로여행", rFriend: "홀로여행", rReivew: "전보단 따듯해졌지만 여전히 추웠음", rStartDate: "2024.02.13", rEndDate: "2024.02.16")
                 
                 let imageList3 = ["airtag.fill", "macpro.gen3.fill", "sun.dust.fill"]
-                let record3 = RecordModel(rId: 5, title: "친구들과 제주 여행기", imageList: imageList3, rTag: "우정여행, 무계획, P들의 모임", rStartDate: "2024.03.02", rEndDate: "2024.03.05", rFriend: "맹구, 땡칠이, 홍길동", rReivew: "친구들과 간만에 모여서 좋았음\n다들 무계획이라서 갑자기 간 여행이지만 재밌었음")
+                let record3 = RecordModel(rId: 5, rTitle: "친구들과 제주 여행기", rPhoto: imageList3, rTag: "우정여행, 무계획, P들의 모임", rFriend: "맹구, 땡칠이, 홍길동", rReivew: "친구들과 간만에 모여서 좋았음\n다들 무계획이라서 갑자기 간 여행이지만 재밌었음", rStartDate: "2024.03.02", rEndDate: "2024.03.05")
                 
                 
                 

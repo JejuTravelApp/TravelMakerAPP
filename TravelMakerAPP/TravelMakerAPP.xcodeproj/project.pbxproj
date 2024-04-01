@@ -99,6 +99,7 @@
 		1746F6C12BA2E84500D044E0 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				17EE16532BBA7CD700406A16 /* Record */,
 				1746F6C22BA2E85400D044E0 /* Map */,
 				1746F7192BB05CE600D044E0 /* RecordImageView.swift */,
 			);
@@ -130,6 +131,13 @@
 				1746F6CD2BA2FB6900D044E0 /* 제주도식당Data_Test.json */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		17EE16532BBA7CD700406A16 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Record;
 			sourceTree = "<group>";
 		};
 		667BB0392B99A2F300983507 = {
