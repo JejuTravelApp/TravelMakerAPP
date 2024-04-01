@@ -7,21 +7,30 @@
 
 import Foundation
 
-struct SearchList{
+struct SearchList : Identifiable{
+    var id : Int //식별자로 사용할 속성
     var searchId : Int
     var searchName : String
     var searchDate : String
     
-    init(searchId: Int, searchName: String, searchDate: String) {
+    init(id : Int, searchId: Int, searchName: String, searchDate: String) {
+        self.id = searchId
         self.searchId = searchId
         self.searchName = searchName
         self.searchDate = searchDate
     }
 }
-
 //ID값 부여
 extension SearchList : Hashable{
     func hash(into hasher: inout Hasher) {
         hasher.combine(searchId)
     }
 }
+//struct SomeData: Identifiable {
+//    var searchDataName: String
+//    var searchDataDate: String
+//    var id: String { self.searchDataName }
+//}
+
+
+
