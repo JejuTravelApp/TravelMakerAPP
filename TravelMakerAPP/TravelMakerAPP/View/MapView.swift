@@ -215,7 +215,7 @@ struct MapView: View {
                             restaurantResult = []
                             updatePosition() // 카메라 초기화
                             
-                            if let results = data.searchRestaurants(searchText: "연돈") {
+                            if let results = data.searchData(searchText: "연돈", filename: "제주도식당_지도Data", type: RestaurantDataModel.self) {
                                 restaurantResult.append(contentsOf: results)  // 배열에 다른 배열의 내용을 추가
                             }
                             

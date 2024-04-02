@@ -25,22 +25,20 @@ class MapDataLoad {
         return nil
     }
     
-    // 관광지 검색 함수
-    func searchTouristsData(searchText: String) -> [TouristDataModel]? {
-        guard let tourists: [TouristDataModel] = loadJson(filename: "제주도관광지Data_test", type: [TouristDataModel].self) else { return nil }
-        return tourists.filter { $0.title.contains(searchText) || $0.category.contains(searchText) }
+    // 범용적인 검색 함수
+    func searchData<T: Decodable & Searchable>(searchText: String, filename: String, type: T.Type) -> [T]? {
+        guard let data: [T] = loadJson(filename: filename, type: [T].self) else { return nil }
+        return data.filter { $0.matches(searchText: searchText) }
     }
     
+    // 모든 데이터를 반환하는 함수
+    func loadAllData<T: Decodable>(filename: String, type: T.Type) -> T? {
+        return loadJson(filename: filename, type: type)
+    }
     // 반려동물 동반 카테고리 버튼 함수
     func searchAnimalData() -> [TouristDataModel]? {
         guard let tourists: [TouristDataModel] = loadJson(filename: "제주도관광지Data_test", type: [TouristDataModel].self) else { return nil }
         return tourists.filter { $0.tag.contains("반려동물") }
-    }
-
-    // 식당 검색 함수
-    func searchRestaurants(searchText: String) -> [RestaurantDataModel]? {
-        guard let restaurants: [RestaurantDataModel] = loadJson(filename: "제주도식당_지도Data", type: [RestaurantDataModel].self) else { return nil }
-        return restaurants.filter { $0.사업장명.contains(searchText) }
     }
     
     // 화장실 검색 함수
@@ -49,8 +47,23 @@ class MapDataLoad {
             nil }
         return toilets
     }
-    
-    
-    
 }
 
+// 검색 가능한 데이터 모델을 위한 프로토콜
+protocol Searchable {
+    func matches(searchText: String) -> Bool
+}
+
+// TouristDataModel이 Searchable 프로토콜을 준수하도록 확장
+extension TouristDataModel: Searchable {
+    func matches(searchText: String) -> Bool {
+        return title.contains(searchText) || category.contains(searchText) || tag.contains(searchText)
+    }
+}
+
+// RestaurantDataModel이 Searchable 프로토콜을 준수하도록 확장
+extension RestaurantDataModel: Searchable {
+    func matches(searchText: String) -> Bool {
+        return 사업장명.contains(searchText)
+    }
+}

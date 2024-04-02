@@ -30,8 +30,6 @@ struct MapSearchBarView: View {
             .focused($isTextFieldFocused)
             .frame(width: UIScreen.main.bounds.width * 0.63, height: 38)
             
-            
-            
             // 텍스트 입력시 x 클리어 버튼 생성
             if !searchText.isEmpty {
                 Button(action: {
@@ -59,15 +57,15 @@ struct MapSearchBarView: View {
         touristResult = []
         toiletResult = []
         
-        if let restaurantResults = data.searchRestaurants(searchText: searchText) {
+        if let restaurantResults = data.searchData(searchText: searchText, filename: "제주도식당_지도Data", type: RestaurantDataModel.self) {
             restaurantResult.append(contentsOf: restaurantResults)  // 배열에 다른 배열의 내용을 추가
         }
-        if let touristResults = data.searchTouristsData(searchText: searchText) {
+        if let touristResults = data.searchData(searchText: searchText, filename: "제주도관광지Data_test", type: TouristDataModel.self) {
             touristResult.append(contentsOf: touristResults)
         }
-        if let toiletResults = data.searchToilets() {
-            toiletResult.append(contentsOf: toiletResults)
-        }
+//        if let toiletResults = data.loadAllData(filename: "제주공중화장실Data_전처리", type: [ToiletDataModel].self) {
+//            toiletResult.append(contentsOf: toiletResults)
+//        }
         
         isTextFieldFocused = false
     }
