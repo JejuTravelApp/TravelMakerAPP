@@ -19,6 +19,7 @@ struct MapView: View {
         span: MKCoordinateSpan(latitudeDelta: 0.6, longitudeDelta: 0.6)
     ))
     @State private var selectedResult: MKMapItem? // 선택된 마커를 알고있을 변수
+    @State var heartMarker: [MarkerModel] = [] // 유저가 찜한 마커
     @State var touristResult: [TouristDataModel] = [] // 관광지, 쇼핑 검색 결과
     @State var restaurantResult: [RestaurantDataModel] = [] // 식당 검색 결과
     @State var toiletResult: [ToiletDataModel] = [] // 화장실 검색 결과
@@ -30,12 +31,21 @@ struct MapView: View {
     @FocusState private var isTextFieldFocused: Bool // FocusState를 부모 뷰에서 관리
     @Namespace var mapScope
     
+    // 마커 옵션
+    @State var imageName: String = ""
+    @State var imageBackColor: Color = Color.white
+    @State var imageForeColor: Color = Color.white
+    
+    
     // @@ === BottomSheet Field === @@
     @State private var showTourSheet: Bool = false // sheet status
     @State private var showFoodSheet: Bool = false // sheet status
     @State private var showToiletSheet: Bool = false // sheet status
     @State private var sheetSize: CGFloat = UIScreen.main.bounds.height * 0.38 // 기본 sheet사이즈
     @State var selectedDetentIdentifier: UISheetPresentationController.Detent.Identifier? = .medium // 기본 sheet사이즈
+    
+    // 찜한 장소
+    @State private var selectedHeartName: String = "" // 찜한곳 마커 이름
     
     // 식당
     @State private var selectedFoodTitle: String = "" // 선택된 마커 이름을 담을 변수
@@ -72,43 +82,63 @@ struct MapView: View {
     var body: some View {
         ZStack {
             Map(position: $position, selection: $selectedResult, scope: mapScope) {
-                
                 // 유저의 위치를 찍어주기위한 파란점 찍기
                 UserAnnotation()
                 
-                
                 // 내가 찜한 장소 어노테이션
-                
+                ForEach(heartMarker, id: \.self) { marker in
+                    Annotation(marker.hmname, coordinate: CLLocationCoordinate2D(latitude: marker.hmlatitude, longitude: marker.hmlongitude)) {
+                        AnnotationShape(imageName: $imageName, imageBackColor: $imageBackColor, imageForeColor: $imageForeColor)
+                            .onTapGesture {
+                                DispatchQueue.main.async {
+                                    updatePosition(latitude: marker.hmlatitude, longitude: marker.hmlongitude, latitudeDelta: 0.03, longitudeDelta: 0.03)
+                                    selectedHeartName = marker.hmname
+                                }
+                            }
+                            .onAppear{
+                                imageName = "heart.circle.fill"
+                                imageBackColor = Color.red
+                                imageForeColor = Color.white
+                            }
+                    }
+                }
                 
                 // 관광지 어노테이션
                 ForEach(touristResult, id: \.self) {  tour in
                     Annotation(tour.title, coordinate: CLLocationCoordinate2D(latitude: tour.latitude, longitude: tour.longitude)) {
-                        ZStack {
-                            if tour.category == "관광지"  && !tour.tag.contains("반려동물"){
-                                AnnotationShape(imageName: "flag.circle.fill", imageBackColor: Color.green, imageForeColor: Color.white)
-                            } else if tour.category == "쇼핑" {
-                                AnnotationShape(imageName: "bag.circle.fill", imageBackColor: Color.orange, imageForeColor: Color.white)
-                            } else {
-                                AnnotationShape(imageName: "dog.circle.fill", imageBackColor: Color.brown, imageForeColor: Color.white)
+                        AnnotationShape(imageName: $imageName, imageBackColor: $imageBackColor, imageForeColor: $imageForeColor)
+                            .onAppear{
+                                if tour.category == "관광지"  && !tour.tag.contains("반려동물"){
+                                    imageName = "flag.circle.fill"
+                                    imageBackColor = Color.green
+                                    imageForeColor = Color.white
+                                } else if tour.category == "쇼핑" {
+                                    imageName = "bag.circle.fill"
+                                    imageBackColor = Color.orange
+                                    imageForeColor = Color.white
+                                } else {
+                                    imageName = "dog.circle.fill"
+                                    imageBackColor = Color.brown
+                                    imageForeColor = Color.white
+                                }
                             }
-                            
-                        }
-                        .onTapGesture {
-                            // 선택된 어노테이션의 위치로 MapCamera 조절
-                            updatePosition(latitude: tour.latitude, longitude: tour.longitude, latitudeDelta: 0.03, longitudeDelta: 0.03)
-                            
-                            selectedTourTitle = tour.title
-                            selectedTourCategory = tour.category
-                            selectedTourAddress = tour.roadaddress
-                            selectedTourImages = tour.imgpath
-                            selectedTourIntro = tour.introduction
-                            selectedTourTag = tour.tag
-                            
-                            if !showTourSheet {
-                                showTourSheet = true
+                            .onTapGesture {
+                                DispatchQueue.main.async {
+                                    // 선택된 어노테이션의 위치로 MapCamera 조절
+                                    updatePosition(latitude: tour.latitude, longitude: tour.longitude, latitudeDelta: 0.03, longitudeDelta: 0.03)
+                                    
+                                    selectedTourTitle = tour.title
+                                    selectedTourCategory = tour.category
+                                    selectedTourAddress = tour.roadaddress
+                                    selectedTourImages = tour.imgpath
+                                    selectedTourIntro = tour.introduction
+                                    selectedTourTag = tour.tag
+                                    
+                                    if !showTourSheet {
+                                        showTourSheet = true
+                                    }
+                                }
                             }
-
-                        }
                     }
                 }
                 
@@ -116,21 +146,27 @@ struct MapView: View {
                 // 음식점 어노테이션
                 ForEach(restaurantResult, id: \.self) {  restaurant in
                     Annotation(restaurant.사업장명, coordinate: CLLocationCoordinate2D(latitude: Double(restaurant.lat) ?? 37.5665, longitude: Double(restaurant.lng) ?? 126.9780)) {
-                            AnnotationShape(imageName: "fork.knife.circle.fill", imageBackColor: Color.orange, imageForeColor: Color.white)
-                        .onTapGesture { // 마커 클릭시 이벤트
-                            //                            DispatchQueue.main.async {
-                            // 선택된 어노테이션의 위치로 MapCamera 조절
-                            updatePosition(latitude: Double(restaurant.lat), longitude: Double(restaurant.lng), latitudeDelta: 0.03, longitudeDelta: 0.03)
-                            
-                            selectedFoodTitle = restaurant.사업장명
-                            selectedFoodImages = restaurant.images // 이미지 상태 업데이트
-                            selectedFoodCategory = restaurant.foodCategory
-                            
-                            if !showFoodSheet {
-                                showFoodSheet = true
+                        AnnotationShape(imageName: $imageName, imageBackColor: $imageBackColor, imageForeColor: $imageForeColor)
+                            .onAppear{
+                                imageName = "fork.knife.circle.fill"
+                                imageBackColor = Color.orange
+                                imageForeColor = Color.white
                             }
-                            
-                        }
+                            .onTapGesture { // 마커 클릭시 이벤트
+                                DispatchQueue.main.async {
+                                    // 선택된 어노테이션의 위치로 MapCamera 조절
+                                    updatePosition(latitude: Double(restaurant.lat), longitude: Double(restaurant.lng), latitudeDelta: 0.03, longitudeDelta: 0.03)
+                                    
+                                    
+                                    selectedFoodTitle = restaurant.사업장명
+                                    selectedFoodImages = restaurant.images // 이미지 상태 업데이트
+                                    selectedFoodCategory = restaurant.foodCategory
+                                    
+                                    if !showFoodSheet {
+                                        showFoodSheet = true
+                                    }
+                                }
+                            }
                     }
                     
                     
@@ -140,12 +176,18 @@ struct MapView: View {
                 // 화장실 어노테이션
                 ForEach(toiletResult, id: \.self) {  toilet in
                     Annotation(toilet.화장실명, coordinate: CLLocationCoordinate2D(latitude: Double(toilet.WGS84위도) ?? 37.5665, longitude: Double(toilet.WGS84경도) ?? 126.9780)) {
-                        AnnotationShape(imageName: "toilet.circle.fill", imageBackColor: Color.indigo, imageForeColor: Color.white)
+                        AnnotationShape(imageName: $imageName, imageBackColor: $imageBackColor, imageForeColor: $imageForeColor)
+                            .onAppear{
+                                imageName = "toilet.circle.fill"
+                                imageBackColor = Color.indigo
+                                imageForeColor = Color.white
+                            }
                             .onTapGesture { // 마커 클릭시 이벤트
                                 
                                 DispatchQueue.main.async {
                                     // 선택된 어노테이션의 위치로 MapCamera 조절
                                     updatePosition(latitude: Double(toilet.WGS84위도), longitude: Double(toilet.WGS84경도), latitudeDelta: 0.03, longitudeDelta: 0.03)
+                                    
                                     
                                     selectedToiletTitle = toilet.화장실명
                                     selectedToiletAddress = toilet.소재지도로명주소
@@ -204,12 +246,47 @@ struct MapView: View {
                 }
                 .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
                 
-                
                 // 나중에 struct로 따로 분리할 필요가 있음
-                // 음식점 버튼
                 ScrollView(.horizontal, showsIndicators: false) {
+                    // 음식점 버튼
                     HStack {
+                        // 찜하기 버튼
+                        Button {
+                            heartMarker = []
+                            toiletResult = []
+                            touristResult = []
+                            restaurantResult = []
+                            updatePosition() // 카메라 초기화
+                            
+                            Task {
+                                heartMarker = try await data.getHeartMarker(url: URL(string: "http://127.0.0.1:8000/api/heartmarker")!)
+                            }
+                        } label: {
+                            HStack(spacing: 5) {
+                                Image(systemName: "heart.circle.fill")
+                                    .resizable()
+                                    .frame(width: 14, height: 14)
+                                    .foregroundColor(Color.red)
+                                Text("찜한장소")
+                                    .bold()
+                                    .font(.system(size: 13))
+                                    .foregroundStyle(Color.black
+                                    )
+                            }
+                            .frame(alignment: .center)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                        }
+                        .background(.white)
+                        .cornerRadius(10)
+                        .padding(5)
+                        .shadow(radius: 3)
+                        
+                        
+                        
+                        
                         Button(action: {
+                            heartMarker = []
                             toiletResult = []
                             touristResult = []
                             restaurantResult = []
@@ -242,6 +319,7 @@ struct MapView: View {
                         
                         // 반려동물 버튼
                         Button(action: {
+                            heartMarker = []
                             toiletResult = []
                             touristResult = []
                             restaurantResult = []
@@ -273,6 +351,7 @@ struct MapView: View {
                         
                         // 화장실 버튼
                         Button(action: {
+                            heartMarker = []
                             toiletResult = []
                             touristResult = []
                             restaurantResult = []
@@ -357,9 +436,9 @@ struct MapView: View {
 // Annotation을 형성하는 struct로 .fill로된 image로 해줘야 이쁨
 struct AnnotationShape: View {
     
-    @State var imageName: String
-    @State var imageBackColor: Color
-    @State var imageForeColor: Color
+    @Binding var imageName: String
+    @Binding var imageBackColor: Color
+    @Binding var imageForeColor: Color
     
     var body: some View {
         LazyVStack(spacing: 0) { // View를 느리게 스캔해서 필요한 것만 로드되기 때문에 퍼포먼스 좋아짐

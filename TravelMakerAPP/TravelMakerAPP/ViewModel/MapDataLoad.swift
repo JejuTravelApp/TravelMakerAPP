@@ -25,6 +25,13 @@ class MapDataLoad {
         return nil
     }
     
+    // 찜하기 마커 검색 함수
+    func getHeartMarker(url: URL) async throws -> [MarkerModel] {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return try JSONDecoder().decode([MarkerModel].self, from: data)
+    }
+    
+    
     // 범용적인 검색 함수
     func searchData<T: Decodable & Searchable>(searchText: String, filename: String, type: T.Type) -> [T]? {
         guard let data: [T] = loadJson(filename: filename, type: [T].self) else { return nil }
