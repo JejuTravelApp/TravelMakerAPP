@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct PlanDetailView: View {
+    
+    var planGroup_text : String
+    
     var body: some View {
         VStack{
-            Text("PLAN DETAIL VIEW")
+            Text(planGroup_text)
         }
     }
-}
-
-#Preview {
-    PlanDetailView()
 }

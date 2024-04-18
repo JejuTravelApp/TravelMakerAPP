@@ -53,28 +53,21 @@ struct PlanView: View {
             //height : 701
             
             VStack{
-//                alwaysDate
-//                    .font(.title3.bold())
-//                    .position(x:geometry.size.width/2)
-                calendarView
-//                    .background(.opacity(0.3))
-//                    .position(x:geometry.size.width/2)
-                    .padding(0)
-                
-                Divider()
-                
-                ScrollView{
+                    //                alwaysDate
+                    //                    .font(.title3.bold())
+                    //                    .position(x:geometry.size.width/2)
+                    calendarView
+                    //                    .background(.opacity(0.3))
+                    //                    .position(x:geometry.size.width/2)
+                        .padding(0)
+                    
+                    Divider()
+                    
+                    
                     addPlanButton
                         .background(.red.opacity(0.1))
-                    Spacer(minLength: 5)
+                    
                     PlanCard()
-                                        
-                }
-                
-      
-
-                
-                
             }
         }
     }
@@ -128,13 +121,13 @@ extension PlanView{
     }
     
     //여행일정 보여줄 뷰 (일정이 있을 때) - List
-    private var addedPlanView : some View{
-        VStack{
-            NavigationStack{
-                
-            }
-        }
-    }
+//    private var addedPlanView : some View{
+//        VStack{
+//            NavigationStack{
+//                
+//            }
+//        }
+//    }
 }
 
 //EXTENSION END =========================================
