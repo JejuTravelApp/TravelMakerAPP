@@ -11,9 +11,9 @@ struct SearchList : Identifiable{
     var id : Int //식별자로 사용할 속성
     var searchId : Int
     var searchName : String
-    var searchDate : String
+    var searchDate : Date
     
-    init(id : Int, searchId: Int, searchName: String, searchDate: String) {
+    init(id : Int, searchId: Int, searchName: String, searchDate: Date) {
         self.id = searchId
         self.searchId = searchId
         self.searchName = searchName
